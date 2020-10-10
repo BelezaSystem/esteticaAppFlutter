@@ -19,11 +19,7 @@ class CustomActionButton extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        gradient: LinearGradient(
-          colors: [Colors.green, Colors.cyan],
-          begin: FractionalOffset.centerLeft,
-          end: FractionalOffset.centerRight,
-        ),
+        color: Colors.blue[300],
       ),
       height: SizeConfig.safeBlockHorizontal * 14.5,
       child: progress

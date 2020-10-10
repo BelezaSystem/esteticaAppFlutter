@@ -5,6 +5,7 @@ class CustomText extends StatelessWidget {
   final Color cor;
   final double tamanhoFonte;
   final bool bold;
+  final bool underline;
   final Shadow shadow;
 
   CustomText({
@@ -12,6 +13,7 @@ class CustomText extends StatelessWidget {
     this.cor,
     this.tamanhoFonte,
     this.bold = false,
+    this.underline = false,
     this.shadow,
   });
 
@@ -23,6 +25,7 @@ class CustomText extends StatelessWidget {
         color: cor,
         fontSize: tamanhoFonte,
         fontWeight: bold ? FontWeight.bold : FontWeight.normal,
+        decoration: underline ? TextDecoration.underline : TextDecoration.none,
         shadows: [
           shadow,
         ],
