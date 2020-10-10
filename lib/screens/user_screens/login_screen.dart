@@ -1,7 +1,5 @@
 import 'package:app_estetica/custom_widgets/buttons_widgets/custom_action_button.dart';
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text_form.dart';
-import 'package:app_estetica/screens/home/home_screen.dart';
-import 'package:app_estetica/utils/nav.dart';
 import 'package:app_estetica/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -65,9 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
               width: SizeConfig.blockSizeVertical * 65.0,
               child: CustomActionButton(
                 campoNome: 'Loga',
-                function: () {
-                  push(context, HomeScreen());
-                },
+                function: () {},
               ),
             ),
           ],
