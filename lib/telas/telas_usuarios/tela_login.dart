@@ -46,7 +46,7 @@ class _TelaLoginState extends State<TelaLogin> {
                 acaoTeclado: TextInputAction.next,
                 tipoTeclado: TextInputType.emailAddress,
                 icone: Icon(
-                  Icons.person_outline,
+                  Icons.email_outlined,
                   color: Colors.black,
                 ),
                 backGColor: Colors.blue[100],
@@ -94,7 +94,7 @@ class _TelaLoginState extends State<TelaLogin> {
               padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
               width: SizeConfig.safeBlockVertical * 65.0,
               child: CustomActionButton(
-                campoNome: 'Loga',
+                campoNome: 'Logar',
                 function: () {},
               ),
             ),
