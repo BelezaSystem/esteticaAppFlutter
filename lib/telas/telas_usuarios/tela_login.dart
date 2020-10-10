@@ -3,12 +3,12 @@ import 'package:app_estetica/custom_widgets/text_widgets/custom_text_form.dart';
 import 'package:app_estetica/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
+class TelaLogin extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _TelaLoginState createState() => _TelaLoginState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _TelaLoginState extends State<TelaLogin> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
