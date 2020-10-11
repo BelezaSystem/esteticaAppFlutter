@@ -46,7 +46,7 @@ class _TelaLoginState extends State<TelaLogin> {
                 acaoTeclado: TextInputAction.next,
                 tipoTeclado: TextInputType.emailAddress,
                 icone: Icon(
-                  Icons.person_outline,
+                  Icons.email_outlined,
                   color: Colors.black,
                 ),
                 backGColor: Colors.blue[100],
