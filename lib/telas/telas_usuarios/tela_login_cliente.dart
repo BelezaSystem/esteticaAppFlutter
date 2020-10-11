@@ -1,18 +1,19 @@
 import 'package:app_estetica/custom_widgets/buttons_widgets/custom_action_button.dart';
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text.dart';
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text_form.dart';
-import 'package:app_estetica/telas/telas_usuarios/tela_cadastro.dart';
+import 'package:app_estetica/telas/telas_usuarios/tela_cadastro_cliente.dart';
 import 'package:app_estetica/utils/nav.dart';
 import 'package:app_estetica/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
-class TelaLogin extends StatefulWidget {
+class TelaLoginCliente extends StatefulWidget {
   @override
-  _TelaLoginState createState() => _TelaLoginState();
+  _TelaLoginClienteState createState() => _TelaLoginClienteState();
 }
 
-class _TelaLoginState extends State<TelaLogin> {
+class _TelaLoginClienteState extends State<TelaLoginCliente> {
   final _focusSenha = FocusNode();
+  bool _esconderSenha = true;
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +35,7 @@ class _TelaLoginState extends State<TelaLogin> {
               ),
               child: Image.asset(
                 "assets/images/barber.png",
-                height: 200,
-                width: 200,
+                width: SizeConfig.safeBlockHorizontal * 50,
               ),
             ),
             Container(
@@ -57,8 +57,9 @@ class _TelaLoginState extends State<TelaLogin> {
               padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
               child: CustomTextForm(
                 dicaCampo: "Digite sua senha",
-                esconderTexto: true,
+                esconderTexto: _esconderSenha,
                 focusNode: _focusSenha,
+                mostrarSenha: true,
                 icone: Icon(
                   Icons.lock_outline,
                   color: Colors.black,
@@ -102,7 +103,10 @@ class _TelaLoginState extends State<TelaLogin> {
               child: InkWell(
                 splashColor: Colors.blue,
                 onTap: () {
-                  push(context, TelaCadastro());
+                  push(
+                    context,
+                    TelaCadastroCliente(),
+                  );
                 },
                 child: CustomText(
                   texto: "Ainda não tem uma conta? Cadastre-se!",

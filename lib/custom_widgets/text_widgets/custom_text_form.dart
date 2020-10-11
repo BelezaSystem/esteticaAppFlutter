@@ -1,7 +1,7 @@
 import 'package:app_estetica/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextForm extends StatelessWidget {
+class CustomTextForm extends StatefulWidget {
   final String dicaCampo;
   final Widget icone;
   final bool fill;
@@ -15,14 +15,17 @@ class CustomTextForm extends StatelessWidget {
 
   final FormFieldValidator<String> validator;
 
-  final bool esconderTexto;
+  bool esconderTexto;
 
   final FocusNode focusNode;
   final FocusNode nextFocus;
 
+  final bool mostrarSenha;
+
   CustomTextForm({
     @required this.dicaCampo,
     this.controller,
+    this.mostrarSenha = false,
     this.esconderTexto = false,
     this.validator,
     this.tipoTeclado,
@@ -36,18 +39,23 @@ class CustomTextForm extends StatelessWidget {
   });
 
   @override
+  _CustomTextFormState createState() => _CustomTextFormState();
+}
+
+class _CustomTextFormState extends State<CustomTextForm> {
+  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return TextFormField(
-      controller: controller,
-      obscureText: esconderTexto,
-      validator: validator,
-      keyboardType: tipoTeclado,
-      textInputAction: acaoTeclado,
-      focusNode: focusNode,
+      controller: widget.controller,
+      obscureText: widget.esconderTexto,
+      validator: widget.validator,
+      keyboardType: widget.tipoTeclado,
+      textInputAction: widget.acaoTeclado,
+      focusNode: widget.focusNode,
       onFieldSubmitted: (String text) {
-        if (nextFocus != null) {
-          FocusScope.of(context).requestFocus(nextFocus);
+        if (widget.nextFocus != null) {
+          FocusScope.of(context).requestFocus(widget.nextFocus);
         }
       },
       style: TextStyle(),
@@ -56,10 +64,23 @@ class CustomTextForm extends StatelessWidget {
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(20),
         ),
-        fillColor: backGColor,
-        filled: fill,
-        prefixIcon: icone,
-        hintText: dicaCampo,
+        fillColor: widget.backGColor,
+        filled: widget.fill,
+        prefixIcon: widget.icone,
+        hintText: widget.dicaCampo,
+        suffixIcon: widget.mostrarSenha
+            ? InkWell(
+                onTap: () {
+                  setState(() {
+                    widget.esconderTexto = !widget.esconderTexto;
+                  });
+                },
+                child: Icon(
+                  Icons.remove_red_eye,
+                  color: Colors.black,
+                ),
+              )
+            : SizedBox(),
         labelStyle: TextStyle(
           fontSize: SizeConfig.safeBlockVertical * 2.8,
           color: Colors.blue,
