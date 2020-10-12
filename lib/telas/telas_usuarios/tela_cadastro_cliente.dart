@@ -41,7 +41,6 @@ class _TelaCadastroClienteState extends State<TelaCadastroCliente> {
                   acaoTeclado: TextInputAction.next,
                   tipoTeclado: TextInputType.text,
                   nextFocus: _focusEmail,
-                  validator: _validator,
                   icone: Icon(
                     Icons.person_outline,
                     color: Colors.black,
@@ -119,11 +118,5 @@ class _TelaCadastroClienteState extends State<TelaCadastroCliente> {
         ),
       ),
     );
-  }
-
-  String _validator(String txt) {
-    if (txt.isEmpty) {
-      return "Preencha esse campo!";
-    }
   }
 }

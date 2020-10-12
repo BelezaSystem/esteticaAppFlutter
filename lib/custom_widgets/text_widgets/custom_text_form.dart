@@ -1,7 +1,7 @@
 import 'package:app_estetica/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextForm extends StatefulWidget {
+class CustomTextForm extends StatelessWidget {
   final String dicaCampo;
   final Widget icone;
 
@@ -42,24 +42,18 @@ class CustomTextForm extends StatefulWidget {
     this.suficone,
   });
 
-  @override
-  _CustomTextFormState createState() => _CustomTextFormState();
-}
-
-class _CustomTextFormState extends State<CustomTextForm> {
-  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return TextFormField(
-      controller: widget.controller,
-      obscureText: widget.esconderTexto,
-      validator: widget.validator,
-      keyboardType: widget.tipoTeclado,
-      textInputAction: widget.acaoTeclado,
-      focusNode: widget.focusNode,
+      controller: controller,
+      obscureText: esconderTexto,
+      validator: validator,
+      keyboardType: tipoTeclado,
+      textInputAction: acaoTeclado,
+      focusNode: focusNode,
       onFieldSubmitted: (String text) {
-        if (widget.nextFocus != null) {
-          FocusScope.of(context).requestFocus(widget.nextFocus);
+        if (nextFocus != null) {
+          FocusScope.of(context).requestFocus(nextFocus);
         }
       },
       style: TextStyle(),

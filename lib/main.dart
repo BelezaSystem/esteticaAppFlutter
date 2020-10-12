@@ -1,7 +1,6 @@
 import 'package:app_estetica/custom_widgets/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'dart:core';
-import 'package:email_validator/email_validator.dart';
 
 void main() {
   runApp(MyApp());
