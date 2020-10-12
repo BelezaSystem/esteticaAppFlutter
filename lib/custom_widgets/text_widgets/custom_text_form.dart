@@ -1,11 +1,13 @@
 import 'package:app_estetica/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextForm extends StatelessWidget {
+class CustomTextForm extends StatefulWidget {
   final String dicaCampo;
   final Widget icone;
+
   final Widget suficone;
   final bool fill;
+
   final Color backGColor;
 
   final bool desabilitarBorda;
@@ -16,14 +18,17 @@ class CustomTextForm extends StatelessWidget {
 
   final FormFieldValidator<String> validator;
 
-  final bool esconderTexto;
+  bool esconderTexto;
 
   final FocusNode focusNode;
   final FocusNode nextFocus;
 
+  final bool mostrarSenha;
+
   CustomTextForm({
     @required this.dicaCampo,
     this.controller,
+    this.mostrarSenha = false,
     this.esconderTexto = false,
     this.validator,
     this.tipoTeclado,
@@ -38,18 +43,23 @@ class CustomTextForm extends StatelessWidget {
   });
 
   @override
+  _CustomTextFormState createState() => _CustomTextFormState();
+}
+
+class _CustomTextFormState extends State<CustomTextForm> {
+  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return TextFormField(
-      controller: controller,
-      obscureText: esconderTexto,
-      validator: validator,
-      keyboardType: tipoTeclado,
-      textInputAction: acaoTeclado,
-      focusNode: focusNode,
+      controller: widget.controller,
+      obscureText: widget.esconderTexto,
+      validator: widget.validator,
+      keyboardType: widget.tipoTeclado,
+      textInputAction: widget.acaoTeclado,
+      focusNode: widget.focusNode,
       onFieldSubmitted: (String text) {
-        if (nextFocus != null) {
-          FocusScope.of(context).requestFocus(nextFocus);
+        if (widget.nextFocus != null) {
+          FocusScope.of(context).requestFocus(widget.nextFocus);
         }
       },
       style: TextStyle(),

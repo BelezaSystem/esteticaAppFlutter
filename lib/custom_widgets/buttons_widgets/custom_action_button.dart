@@ -6,10 +6,12 @@ class CustomActionButton extends StatelessWidget {
   final Function function;
 
   final bool progress;
+  final Color color;
 
   CustomActionButton({
     @required this.campoNome,
     this.function,
+    this.color,
     this.progress = false,
   });
 
@@ -19,7 +21,7 @@ class CustomActionButton extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Colors.blue[300],
+        color: color != null ? color : Colors.blue[300],
       ),
       height: SizeConfig.safeBlockHorizontal * 14.5,
       child: progress

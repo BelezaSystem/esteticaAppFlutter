@@ -1,5 +1,4 @@
 import 'package:app_estetica/telas/telas_usuarios/decisao_usario.dart';
-import 'package:app_estetica/telas/telas_usuarios/tela_login.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 
