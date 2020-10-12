@@ -25,6 +25,8 @@ class CustomTextForm extends StatelessWidget {
 
   final bool mostrarSenha;
 
+  final Function digitado;
+
   CustomTextForm({
     @required this.dicaCampo,
     this.controller,
@@ -40,6 +42,7 @@ class CustomTextForm extends StatelessWidget {
     this.fill,
     this.desabilitarBorda,
     this.suficone,
+    this.digitado,
   });
 
   Widget build(BuildContext context) {
@@ -48,6 +51,7 @@ class CustomTextForm extends StatelessWidget {
       controller: controller,
       obscureText: esconderTexto,
       validator: validator,
+      onChanged: digitado,
       keyboardType: tipoTeclado,
       textInputAction: acaoTeclado,
       focusNode: focusNode,

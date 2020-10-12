@@ -1,10 +1,12 @@
 import 'package:app_estetica/custom_widgets/buttons_widgets/custom_action_button.dart';
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text.dart';
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text_form.dart';
+import 'package:app_estetica/states/state_login.dart';
 import 'package:app_estetica/telas/telas_usuarios/tela_cadastro_cliente.dart';
 import 'package:app_estetica/utils/nav.dart';
 import 'package:app_estetica/utils/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class TelaLoginCliente extends StatefulWidget {
   @override
@@ -12,6 +14,8 @@ class TelaLoginCliente extends StatefulWidget {
 }
 
 class _TelaLoginClienteState extends State<TelaLoginCliente> {
+  StateLogin stateLogin = StateLogin();
+
   final _focusSenha = FocusNode();
   bool _esconderSenha = true;
 
@@ -51,6 +55,7 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
                 ),
                 backGColor: Colors.blue[100],
                 fill: true,
+                digitado: stateLogin.setEmail,
               ),
             ),
             Container(
@@ -69,6 +74,7 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
                 ),
                 backGColor: Colors.blue[100],
                 fill: true,
+                digitado: stateLogin.setSenha,
               ),
             ),
             SizedBox(
@@ -97,10 +103,12 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
               ),
               padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
               width: SizeConfig.safeBlockVertical * 65.0,
-              child: CustomActionButton(
-                campoNome: 'Logar',
-                function: () {},
-              ),
+              child: Observer(builder: (_) {
+                return CustomActionButton(
+                  campoNome: 'Logar',
+                  function: stateLogin.seFormValido ? () {} : null,
+                );
+              }),
             ),
             Container(
               child: InkWell(
