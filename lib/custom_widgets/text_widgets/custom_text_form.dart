@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class CustomTextForm extends StatelessWidget {
   final String dicaCampo;
   final Widget icone;
+  final Widget suficone;
   final bool fill;
   final Color backGColor;
 
@@ -33,6 +34,7 @@ class CustomTextForm extends StatelessWidget {
     this.backGColor,
     this.fill,
     this.desabilitarBorda,
+    this.suficone,
   });
 
   @override
@@ -59,6 +61,7 @@ class CustomTextForm extends StatelessWidget {
         fillColor: backGColor,
         filled: fill,
         prefixIcon: icone,
+        suffixIcon: suficone,
         hintText: dicaCampo,
         labelStyle: TextStyle(
           fontSize: SizeConfig.safeBlockVertical * 2.8,

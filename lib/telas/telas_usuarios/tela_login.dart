@@ -59,6 +59,10 @@ class _TelaLoginState extends State<TelaLogin> {
                 dicaCampo: "Digite sua senha",
                 esconderTexto: true,
                 focusNode: _focusSenha,
+                suficone: Icon(
+                  Icons.remove_red_eye,
+                  color: Colors.black,
+                ),
                 icone: Icon(
                   Icons.lock_outline,
                   color: Colors.black,
