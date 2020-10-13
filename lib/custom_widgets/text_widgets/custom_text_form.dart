@@ -1,4 +1,3 @@
-import 'package:app_estetica/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextForm extends StatelessWidget {
@@ -45,7 +44,6 @@ class CustomTextForm extends StatelessWidget {
   });
 
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return TextFormField(
       controller: controller,
       obscureText: esconderTexto,
@@ -72,11 +70,11 @@ class CustomTextForm extends StatelessWidget {
         suffixIcon: suficone,
         hintText: dicaCampo,
         labelStyle: TextStyle(
-          fontSize: SizeConfig.safeBlockVertical * 2.8,
+          fontSize: 19,
           color: Colors.blue,
         ),
         hintStyle: TextStyle(
-          fontSize: SizeConfig.safeBlockVertical * 2.3,
+          fontSize: 19,
           color: Colors.grey[850],
         ),
       ),

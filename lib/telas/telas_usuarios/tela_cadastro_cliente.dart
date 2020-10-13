@@ -1,6 +1,5 @@
 import 'package:app_estetica/custom_widgets/buttons_widgets/custom_action_button.dart';
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text_form.dart';
-import 'package:app_estetica/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
 class TelaCadastroCliente extends StatefulWidget {
@@ -17,7 +16,6 @@ class _TelaCadastroClienteState extends State<TelaCadastroCliente> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
         title: Text("Cadastre-se"),
@@ -96,14 +94,14 @@ class _TelaCadastroClienteState extends State<TelaCadastroCliente> {
                 ),
               ),
               SizedBox(
-                height: SizeConfig.safeBlockVertical * 6,
+                height: 19,
               ),
               Container(
                 margin: EdgeInsets.only(
-                  bottom: SizeConfig.safeBlockVertical * 2,
+                  bottom: 10,
                 ),
                 padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                width: SizeConfig.safeBlockVertical * 65.0,
+                width: 500,
                 child: CustomActionButton(
                   campoNome: 'Cadastrar',
                   function: () {
