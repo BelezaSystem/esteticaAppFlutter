@@ -2,6 +2,8 @@ import 'package:app_estetica/custom_widgets/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'dart:core';
 
+import 'package:flutter/services.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -9,6 +11,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "App estética",
