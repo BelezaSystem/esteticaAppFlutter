@@ -62,7 +62,7 @@ class CustomTextForm extends StatelessWidget {
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(19),
         ),
         fillColor: backGColor,
         filled: fill,
