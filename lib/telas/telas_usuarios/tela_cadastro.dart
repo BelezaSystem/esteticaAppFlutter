@@ -1,16 +1,18 @@
 import 'package:app_estetica/custom_widgets/buttons_widgets/custom_action_button.dart';
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text_form.dart';
 import 'package:app_estetica/utils/size_config.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
-class TelaCadastroCliente extends StatefulWidget {
+class TelaCadastro extends StatefulWidget {
   @override
-  _TelaCadastroClienteState createState() => _TelaCadastroClienteState();
+  _TelaCadastroState createState() => _TelaCadastroState();
 }
 
-class _TelaCadastroClienteState extends State<TelaCadastroCliente> {
-  final _focusEmail = FocusNode();
-  final _focusNumero = FocusNode();
+class _TelaCadastroState extends State<TelaCadastro> {
+  static const String email = 'eilertsen@gail.com';
+  final bool isValid = EmailValidator.validate(email);
+
   final _focusSenha = FocusNode();
 
   final _formKey = GlobalKey<FormState>();
@@ -40,7 +42,6 @@ class _TelaCadastroClienteState extends State<TelaCadastroCliente> {
                   dicaCampo: "Digite seu nome",
                   acaoTeclado: TextInputAction.next,
                   tipoTeclado: TextInputType.text,
-                  nextFocus: _focusEmail,
                   icone: Icon(
                     Icons.person_outline,
                     color: Colors.black,
@@ -55,8 +56,6 @@ class _TelaCadastroClienteState extends State<TelaCadastroCliente> {
                   dicaCampo: "Digite seu email",
                   acaoTeclado: TextInputAction.next,
                   tipoTeclado: TextInputType.emailAddress,
-                  focusNode: _focusEmail,
-                  nextFocus: _focusNumero,
                   icone: Icon(
                     Icons.email_outlined,
                     color: Colors.black,
@@ -69,7 +68,6 @@ class _TelaCadastroClienteState extends State<TelaCadastroCliente> {
                 padding: EdgeInsets.fromLTRB(20, 15, 20, 5),
                 child: CustomTextForm(
                   dicaCampo: "Digite seu numero",
-                  focusNode: _focusNumero,
                   nextFocus: _focusSenha,
                   acaoTeclado: TextInputAction.next,
                   tipoTeclado: TextInputType.number,
@@ -96,7 +94,10 @@ class _TelaCadastroClienteState extends State<TelaCadastroCliente> {
                 ),
               ),
               SizedBox(
-                height: SizeConfig.safeBlockVertical * 6,
+                height: SizeConfig.safeBlockVertical * 1,
+              ),
+              SizedBox(
+                height: SizeConfig.safeBlockVertical * 5,
               ),
               Container(
                 margin: EdgeInsets.only(

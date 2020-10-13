@@ -2,11 +2,8 @@ import 'package:app_estetica/custom_widgets/buttons_widgets/custom_action_button
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text.dart';
 import 'package:app_estetica/telas/telas_usuarios/tela_login_cliente.dart';
 import 'package:app_estetica/utils/nav.dart';
-
+import 'package:app_estetica/utils/size_config.dart';
 import 'package:flutter/material.dart';
-
-import '../../utils/nav.dart';
-import 'tela_login_cliente.dart';
 
 class DecisaoUsuario extends StatefulWidget {
   @override
@@ -16,6 +13,7 @@ class DecisaoUsuario extends StatefulWidget {
 class _DecisaoUsuarioState extends State<DecisaoUsuario> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       body: _body(),
     );
@@ -38,7 +36,7 @@ class _DecisaoUsuarioState extends State<DecisaoUsuario> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              alignment: Alignment.center,
+              padding: EdgeInsets.only(top: 10, bottom: 20),
               child: CustomText(
                 texto: 'Bem Vindo!',
                 cor: Colors.white,
@@ -48,54 +46,38 @@ class _DecisaoUsuarioState extends State<DecisaoUsuario> {
             ),
             CustomText(
               texto: 'Como você deseja utilizar o aplicativo?',
-              tamanhoFonte: 19,
+              tamanhoFonte: SizeConfig.safeBlockHorizontal * 4,
               cor: Colors.white,
             ),
             Container(
-              decoration: BoxDecoration(
-                color: Colors.white12,
-                borderRadius: BorderRadius.circular(10),
+              margin: EdgeInsets.only(
+                top: 5,
               ),
-              padding: EdgeInsets.all(20),
-              margin: EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  _botaoDeDecisao(
-                    nomeDoBotao: "Cliente",
-                    funcaoDoBotao: () {
-                      push(context, TelaLoginCliente());
-                    },
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  _botaoDeDecisao(
-                    nomeDoBotao: "Gerente",
-                    funcaoDoBotao: () {},
-                  ),
-                ],
+              padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+              width: SizeConfig.blockSizeVertical * 65.0,
+              child: CustomActionButton(
+                campoNome: 'Cliente',
+                color: Colors.black54,
+                function: () {
+                  push(
+                    context,
+                    TelaLoginCliente(),
+                  );
+                },
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
+              width: SizeConfig.blockSizeVertical * 65.0,
+              child: CustomActionButton(
+                campoNome: 'Gerente',
+                color: Colors.black54,
+                function: () {},
               ),
             ),
           ],
         )
       ],
-    );
-  }
-
-  _botaoDeDecisao({String nomeDoBotao, Function funcaoDoBotao}) {
-    return Container(
-      width: 400,
-      child: CustomActionButton(
-        campoNome: nomeDoBotao,
-        color: Colors.black54,
-        splashColor: Colors.grey[300],
-        textColor: Colors.white,
-        textBold: true,
-        circular: 10,
-        function: () {
-          funcaoDoBotao();
-        },
-      ),
     );
   }
 }
