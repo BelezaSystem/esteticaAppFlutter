@@ -1,4 +1,3 @@
-import 'package:app_estetica/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
 class CustomActionButton extends StatelessWidget {
@@ -26,7 +25,6 @@ class CustomActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(
@@ -34,7 +32,7 @@ class CustomActionButton extends StatelessWidget {
         ),
         color: color != null ? color : Colors.blue[300],
       ),
-      height: SizeConfig.safeBlockHorizontal * 14.5,
+      height: 75,
       child: progress
           ? Center(
               child: CircularProgressIndicator(
@@ -47,7 +45,7 @@ class CustomActionButton extends StatelessWidget {
               child: Text(
                 campoNome,
                 style: TextStyle(
-                  fontSize: SizeConfig.safeBlockHorizontal * 6,
+                  fontSize: 28,
                   color: textColor != null ? textColor : Colors.white,
                   fontWeight: textBold ? FontWeight.bold : null,
                 ),

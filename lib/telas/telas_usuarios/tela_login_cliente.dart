@@ -4,11 +4,9 @@ import 'package:app_estetica/custom_widgets/text_widgets/custom_text_form.dart';
 import 'package:app_estetica/states/state_login.dart';
 import 'package:app_estetica/telas/telas_usuarios/tela_cadastro_cliente.dart';
 import 'package:app_estetica/utils/nav.dart';
-import 'package:app_estetica/utils/size_config.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-
-import '../../utils/size_config.dart';
 
 class TelaLoginCliente extends StatefulWidget {
   @override
@@ -22,7 +20,6 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Scaffold(
       body: _body(),
     );
@@ -49,7 +46,7 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
               color: Colors.white38,
             ),
             margin: EdgeInsets.only(
-              top: MediaQuery.of(context).size.height / 3,
+              top: 250,
               left: 20,
               right: 20,
             ),
@@ -107,7 +104,7 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
                   }),
                 ),
                 SizedBox(
-                  height: SizeConfig.safeBlockVertical * 1,
+                  height: 7,
                 ),
                 Container(
                   padding: EdgeInsets.fromLTRB(20, 0, 25, 0),
@@ -119,19 +116,19 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
                       texto: "Esqueceu sua senha?",
                       bold: true,
                       cor: Colors.black,
-                      tamanhoFonte: 16,
+                      tamanhoFonte: 19,
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: SizeConfig.safeBlockVertical * 5,
+                  height: 50,
                 ),
                 Container(
                   margin: EdgeInsets.only(
-                    bottom: SizeConfig.safeBlockVertical * 2,
+                    bottom: 10,
                   ),
                   padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                  width: SizeConfig.safeBlockVertical * 65.0,
+                  width: 500,
                   child: Observer(builder: (_) {
                     return CustomActionButton(
                       campoNome: 'Login',
@@ -160,7 +157,7 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
                       texto: "Não tem uma conta? Cadastre-se!",
                       bold: true,
                       cor: Colors.black,
-                      tamanhoFonte: 15,
+                      tamanhoFonte: 20,
                       underline: true,
                     ),
                   ),

@@ -4,6 +4,8 @@ import 'dart:core';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'package:flutter/services.dart';
+import 'package:responsive_framework/responsive_framework.dart';
+import 'package:responsive_framework/responsive_wrapper.dart';
 
 void main() {
   runApp(MyApp());

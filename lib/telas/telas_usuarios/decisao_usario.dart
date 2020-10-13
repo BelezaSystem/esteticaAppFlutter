@@ -2,7 +2,7 @@ import 'package:app_estetica/custom_widgets/buttons_widgets/custom_action_button
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text.dart';
 import 'package:app_estetica/telas/telas_usuarios/tela_login_cliente.dart';
 import 'package:app_estetica/utils/nav.dart';
-import 'package:app_estetica/utils/size_config.dart';
+
 import 'package:flutter/material.dart';
 
 import '../../utils/nav.dart';
@@ -16,7 +16,6 @@ class DecisaoUsuario extends StatefulWidget {
 class _DecisaoUsuarioState extends State<DecisaoUsuario> {
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return Scaffold(
       body: _body(),
     );
@@ -49,7 +48,7 @@ class _DecisaoUsuarioState extends State<DecisaoUsuario> {
             ),
             CustomText(
               texto: 'Como você deseja utilizar o aplicativo?',
-              tamanhoFonte: SizeConfig.safeBlockHorizontal * 4,
+              tamanhoFonte: 19,
               cor: Colors.white,
             ),
             Container(
@@ -85,7 +84,7 @@ class _DecisaoUsuarioState extends State<DecisaoUsuario> {
 
   _botaoDeDecisao({String nomeDoBotao, Function funcaoDoBotao}) {
     return Container(
-      width: SizeConfig.blockSizeVertical * 65.0,
+      width: 400,
       child: CustomActionButton(
         campoNome: nomeDoBotao,
         color: Colors.black54,
