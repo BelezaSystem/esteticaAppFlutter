@@ -1,10 +1,12 @@
 import 'package:app_estetica/custom_widgets/buttons_widgets/custom_action_button.dart';
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text.dart';
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text_form.dart';
+import 'package:app_estetica/states/state_login.dart';
 import 'package:app_estetica/telas/telas_usuarios/tela_cadastro_cliente.dart';
 import 'package:app_estetica/utils/nav.dart';
 import 'package:app_estetica/utils/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class TelaLoginCliente extends StatefulWidget {
   @override
@@ -12,8 +14,9 @@ class TelaLoginCliente extends StatefulWidget {
 }
 
 class _TelaLoginClienteState extends State<TelaLoginCliente> {
+  StateLogin stateLogin = StateLogin();
+
   final _focusSenha = FocusNode();
-  bool _esconderSenha = true;
 
   @override
   Widget build(BuildContext context) {
@@ -40,33 +43,51 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
             ),
             Container(
               padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
-              child: CustomTextForm(
-                dicaCampo: "Digite seu email",
-                nextFocus: _focusSenha,
-                acaoTeclado: TextInputAction.next,
-                tipoTeclado: TextInputType.emailAddress,
-                icone: Icon(
-                  Icons.email_outlined,
-                  color: Colors.black,
-                ),
-                backGColor: Colors.blue[100],
-                fill: true,
-              ),
+              child: Observer(builder: (_) {
+                return CustomTextForm(
+                  ativarCampo: !stateLogin.loading,
+                  dicaCampo: "Digite seu email",
+                  nextFocus: _focusSenha,
+                  acaoTeclado: TextInputAction.next,
+                  tipoTeclado: TextInputType.emailAddress,
+                  icone: Icon(
+                    Icons.email_outlined,
+                    color: Colors.blue[700],
+                  ),
+                  backGColor: Colors.blue[100],
+                  fill: true,
+                  digitado: stateLogin.setEmail,
+                );
+              }),
             ),
             Container(
               padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
-              child: CustomTextForm(
-                dicaCampo: "Digite sua senha",
-                esconderTexto: _esconderSenha,
-                focusNode: _focusSenha,
-                mostrarSenha: true,
-                icone: Icon(
-                  Icons.lock_outline,
-                  color: Colors.black,
-                ),
-                backGColor: Colors.blue[100],
-                fill: true,
-              ),
+              child: Observer(builder: (_) {
+                return CustomTextForm(
+                    ativarCampo: !stateLogin.loading,
+                    dicaCampo: "Digite sua senha",
+                    esconderTexto: !stateLogin.esconderSenha,
+                    focusNode: _focusSenha,
+                    icone: Icon(
+                      Icons.lock_outline,
+                      color: Colors.blue[700],
+                    ),
+                    backGColor: Colors.blue[100],
+                    fill: true,
+                    digitado: stateLogin.setSenha,
+                    suficone: InkWell(
+                      onTap: stateLogin.btnMudarSenha,
+                      child: stateLogin.esconderSenha
+                          ? Icon(
+                              Icons.visibility_off,
+                              color: Colors.blue[600],
+                            )
+                          : Icon(
+                              Icons.visibility,
+                              color: Colors.blue[500],
+                            ),
+                    ));
+              }),
             ),
             SizedBox(
               height: SizeConfig.safeBlockVertical * 1,
@@ -94,10 +115,17 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
               ),
               padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
               width: SizeConfig.safeBlockVertical * 65.0,
-              child: CustomActionButton(
-                campoNome: 'Logar',
-                function: () {},
-              ),
+              child: Observer(builder: (_) {
+                return CustomActionButton(
+                  campoNome: 'Logar',
+                  progress: stateLogin.loading,
+                  function: stateLogin.seFormValido
+                      ? () {
+                          stateLogin.login();
+                        }
+                      : null,
+                );
+              }),
             ),
             Container(
               child: InkWell(

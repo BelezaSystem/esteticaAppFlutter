@@ -1,10 +1,14 @@
 import 'package:app_estetica/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextForm extends StatefulWidget {
+class CustomTextForm extends StatelessWidget {
   final String dicaCampo;
   final Widget icone;
+  final bool ativarCampo;
+
+  final Widget suficone;
   final bool fill;
+
   final Color backGColor;
 
   final bool desabilitarBorda;
@@ -15,17 +19,17 @@ class CustomTextForm extends StatefulWidget {
 
   final FormFieldValidator<String> validator;
 
-  bool esconderTexto;
+  final bool esconderTexto;
 
   final FocusNode focusNode;
   final FocusNode nextFocus;
 
-  final bool mostrarSenha;
+  final Function digitado;
 
   CustomTextForm({
     @required this.dicaCampo,
+    this.ativarCampo,
     this.controller,
-    this.mostrarSenha = false,
     this.esconderTexto = false,
     this.validator,
     this.tipoTeclado,
@@ -36,26 +40,24 @@ class CustomTextForm extends StatefulWidget {
     this.backGColor,
     this.fill,
     this.desabilitarBorda,
+    this.suficone,
+    this.digitado,
   });
 
-  @override
-  _CustomTextFormState createState() => _CustomTextFormState();
-}
-
-class _CustomTextFormState extends State<CustomTextForm> {
-  @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return TextFormField(
-      controller: widget.controller,
-      obscureText: widget.esconderTexto,
-      validator: widget.validator,
-      keyboardType: widget.tipoTeclado,
-      textInputAction: widget.acaoTeclado,
-      focusNode: widget.focusNode,
+      controller: controller,
+      obscureText: esconderTexto,
+      validator: validator,
+      enabled: ativarCampo,
+      onChanged: digitado,
+      keyboardType: tipoTeclado,
+      textInputAction: acaoTeclado,
+      focusNode: focusNode,
       onFieldSubmitted: (String text) {
-        if (widget.nextFocus != null) {
-          FocusScope.of(context).requestFocus(widget.nextFocus);
+        if (nextFocus != null) {
+          FocusScope.of(context).requestFocus(nextFocus);
         }
       },
       style: TextStyle(),
@@ -64,23 +66,11 @@ class _CustomTextFormState extends State<CustomTextForm> {
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(20),
         ),
-        fillColor: widget.backGColor,
-        filled: widget.fill,
-        prefixIcon: widget.icone,
-        hintText: widget.dicaCampo,
-        suffixIcon: widget.mostrarSenha
-            ? InkWell(
-                onTap: () {
-                  setState(() {
-                    widget.esconderTexto = !widget.esconderTexto;
-                  });
-                },
-                child: Icon(
-                  Icons.remove_red_eye,
-                  color: Colors.black,
-                ),
-              )
-            : SizedBox(),
+        fillColor: backGColor,
+        filled: fill,
+        prefixIcon: icone,
+        suffixIcon: suficone,
+        hintText: dicaCampo,
         labelStyle: TextStyle(
           fontSize: SizeConfig.safeBlockVertical * 2.8,
           color: Colors.blue,
