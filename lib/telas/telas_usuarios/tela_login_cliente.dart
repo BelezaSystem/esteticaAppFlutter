@@ -154,7 +154,7 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
                       );
                     },
                     child: CustomText(
-                      texto: "Não tem uma conta? Cadastre-se!",
+                      texto: "Não tem uma conta? Cadastre!",
                       bold: true,
                       cor: Colors.black,
                       tamanhoFonte: 20,
