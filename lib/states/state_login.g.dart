@@ -61,6 +61,21 @@ mixin _$StateLogin on _StateLoginBase, Store {
     });
   }
 
+  final _$esconderSenhaAtom = Atom(name: '_StateLoginBase.esconderSenha');
+
+  @override
+  bool get esconderSenha {
+    _$esconderSenhaAtom.reportRead();
+    return super.esconderSenha;
+  }
+
+  @override
+  set esconderSenha(bool value) {
+    _$esconderSenhaAtom.reportWrite(value, super.esconderSenha, () {
+      super.esconderSenha = value;
+    });
+  }
+
   final _$_StateLoginBaseActionController =
       ActionController(name: '_StateLoginBase');
 
@@ -87,10 +102,22 @@ mixin _$StateLogin on _StateLoginBase, Store {
   }
 
   @override
+  void btnMudarSenha() {
+    final _$actionInfo = _$_StateLoginBaseActionController.startAction(
+        name: '_StateLoginBase.btnMudarSenha');
+    try {
+      return super.btnMudarSenha();
+    } finally {
+      _$_StateLoginBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 email: ${email},
 senha: ${senha},
+esconderSenha: ${esconderSenha},
 seSenhaValido: ${seSenhaValido},
 seEmailValido: ${seEmailValido},
 seFormValido: ${seFormValido}

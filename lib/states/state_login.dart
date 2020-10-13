@@ -16,6 +16,12 @@ abstract class _StateLoginBase with Store {
   @action
   void setSenha(String newSenha) => senha = newSenha;
 
+  @observable
+  bool esconderSenha = false;
+
+  @action
+  void btnMudarSenha() => esconderSenha = !esconderSenha;
+
   @computed
   bool get seSenhaValido => senha.length >= 6;
 

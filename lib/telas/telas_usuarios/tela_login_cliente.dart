@@ -17,7 +17,6 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
   StateLogin stateLogin = StateLogin();
 
   final _focusSenha = FocusNode();
-  bool _esconderSenha = true;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +50,7 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
                 tipoTeclado: TextInputType.emailAddress,
                 icone: Icon(
                   Icons.email_outlined,
-                  color: Colors.black,
+                  color: Colors.blue[700],
                 ),
                 backGColor: Colors.blue[100],
                 fill: true,
@@ -60,22 +59,31 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
             ),
             Container(
               padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
-              child: CustomTextForm(
-                dicaCampo: "Digite sua senha",
-                esconderTexto: _esconderSenha,
-                focusNode: _focusSenha,
-                suficone: Icon(
-                  Icons.remove_red_eye,
-                  color: Colors.black,
-                ),
-                icone: Icon(
-                  Icons.lock_outline,
-                  color: Colors.black,
-                ),
-                backGColor: Colors.blue[100],
-                fill: true,
-                digitado: stateLogin.setSenha,
-              ),
+              child: Observer(builder: (_) {
+                return CustomTextForm(
+                    dicaCampo: "Digite sua senha",
+                    esconderTexto: !stateLogin.esconderSenha,
+                    focusNode: _focusSenha,
+                    icone: Icon(
+                      Icons.lock_outline,
+                      color: Colors.blue[700],
+                    ),
+                    backGColor: Colors.blue[100],
+                    fill: true,
+                    digitado: stateLogin.setSenha,
+                    suficone: InkWell(
+                      onTap: stateLogin.btnMudarSenha,
+                      child: stateLogin.esconderSenha
+                          ? Icon(
+                              Icons.visibility_off,
+                              color: Colors.blue[600],
+                            )
+                          : Icon(
+                              Icons.visibility,
+                              color: Colors.blue[500],
+                            ),
+                    ));
+              }),
             ),
             SizedBox(
               height: SizeConfig.safeBlockVertical * 1,

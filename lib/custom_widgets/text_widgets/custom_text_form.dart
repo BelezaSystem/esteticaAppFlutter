@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class CustomTextForm extends StatelessWidget {
   final String dicaCampo;
   final Widget icone;
+  final bool ativar;
 
   final Widget suficone;
   final bool fill;
@@ -18,19 +19,17 @@ class CustomTextForm extends StatelessWidget {
 
   final FormFieldValidator<String> validator;
 
-  bool esconderTexto;
+  final bool esconderTexto;
 
   final FocusNode focusNode;
   final FocusNode nextFocus;
-
-  final bool mostrarSenha;
 
   final Function digitado;
 
   CustomTextForm({
     @required this.dicaCampo,
+    this.ativar,
     this.controller,
-    this.mostrarSenha = false,
     this.esconderTexto = false,
     this.validator,
     this.tipoTeclado,
@@ -51,6 +50,7 @@ class CustomTextForm extends StatelessWidget {
       controller: controller,
       obscureText: esconderTexto,
       validator: validator,
+      enabled: ativar,
       onChanged: digitado,
       keyboardType: tipoTeclado,
       textInputAction: acaoTeclado,
