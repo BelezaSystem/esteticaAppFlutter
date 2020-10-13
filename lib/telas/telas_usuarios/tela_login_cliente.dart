@@ -43,20 +43,22 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
             ),
             Container(
               padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
-              child: CustomTextForm(
-                ativarCampo: !stateLogin.loading,
-                dicaCampo: "Digite seu email",
-                nextFocus: _focusSenha,
-                acaoTeclado: TextInputAction.next,
-                tipoTeclado: TextInputType.emailAddress,
-                icone: Icon(
-                  Icons.email_outlined,
-                  color: Colors.blue[700],
-                ),
-                backGColor: Colors.blue[100],
-                fill: true,
-                digitado: stateLogin.setEmail,
-              ),
+              child: Observer(builder: (_) {
+                return CustomTextForm(
+                  ativarCampo: !stateLogin.loading,
+                  dicaCampo: "Digite seu email",
+                  nextFocus: _focusSenha,
+                  acaoTeclado: TextInputAction.next,
+                  tipoTeclado: TextInputType.emailAddress,
+                  icone: Icon(
+                    Icons.email_outlined,
+                    color: Colors.blue[700],
+                  ),
+                  backGColor: Colors.blue[100],
+                  fill: true,
+                  digitado: stateLogin.setEmail,
+                );
+              }),
             ),
             Container(
               padding: EdgeInsets.fromLTRB(20, 5, 20, 5),

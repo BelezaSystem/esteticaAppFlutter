@@ -5,7 +5,7 @@ class StateLogin = _StateLoginBase with _$StateLogin;
 
 abstract class _StateLoginBase with Store {
   @observable
-  String email = '';
+  String email = 'exemple@exemple.com';
 
 //Setando email e senha para o controle do estado
   @action
@@ -27,7 +27,7 @@ abstract class _StateLoginBase with Store {
 //Validando email e senha
   @computed
   bool get seEmailValido => RegExp(
-          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+          r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
       .hasMatch(email);
 
   @computed
@@ -36,7 +36,7 @@ abstract class _StateLoginBase with Store {
   @computed
   bool get seFormValido => seEmailValido && seSenhaValido;
 
-//action de esconder os textForm quando estiver em loading..
+//action de desativar os textForm quando estiver em loading..
   @observable
   bool loading = false;
 
