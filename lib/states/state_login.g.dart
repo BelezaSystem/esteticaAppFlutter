@@ -9,19 +9,19 @@ part of 'state_login.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$StateLogin on _StateLoginBase, Store {
-  Computed<bool> _$seSenhaValidoComputed;
-
-  @override
-  bool get seSenhaValido =>
-      (_$seSenhaValidoComputed ??= Computed<bool>(() => super.seSenhaValido,
-              name: '_StateLoginBase.seSenhaValido'))
-          .value;
   Computed<bool> _$seEmailValidoComputed;
 
   @override
   bool get seEmailValido =>
       (_$seEmailValidoComputed ??= Computed<bool>(() => super.seEmailValido,
               name: '_StateLoginBase.seEmailValido'))
+          .value;
+  Computed<bool> _$seSenhaValidoComputed;
+
+  @override
+  bool get seSenhaValido =>
+      (_$seSenhaValidoComputed ??= Computed<bool>(() => super.seSenhaValido,
+              name: '_StateLoginBase.seSenhaValido'))
           .value;
   Computed<bool> _$seFormValidoComputed;
 
@@ -76,6 +76,28 @@ mixin _$StateLogin on _StateLoginBase, Store {
     });
   }
 
+  final _$loadingAtom = Atom(name: '_StateLoginBase.loading');
+
+  @override
+  bool get loading {
+    _$loadingAtom.reportRead();
+    return super.loading;
+  }
+
+  @override
+  set loading(bool value) {
+    _$loadingAtom.reportWrite(value, super.loading, () {
+      super.loading = value;
+    });
+  }
+
+  final _$loginAsyncAction = AsyncAction('_StateLoginBase.login');
+
+  @override
+  Future<void> login() {
+    return _$loginAsyncAction.run(() => super.login());
+  }
+
   final _$_StateLoginBaseActionController =
       ActionController(name: '_StateLoginBase');
 
@@ -118,8 +140,9 @@ mixin _$StateLogin on _StateLoginBase, Store {
 email: ${email},
 senha: ${senha},
 esconderSenha: ${esconderSenha},
-seSenhaValido: ${seSenhaValido},
+loading: ${loading},
 seEmailValido: ${seEmailValido},
+seSenhaValido: ${seSenhaValido},
 seFormValido: ${seFormValido}
     ''';
   }

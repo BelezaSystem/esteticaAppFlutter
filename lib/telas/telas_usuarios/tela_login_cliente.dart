@@ -44,6 +44,7 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
             Container(
               padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
               child: CustomTextForm(
+                ativarCampo: !stateLogin.loading,
                 dicaCampo: "Digite seu email",
                 nextFocus: _focusSenha,
                 acaoTeclado: TextInputAction.next,
@@ -61,6 +62,7 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
               padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
               child: Observer(builder: (_) {
                 return CustomTextForm(
+                    ativarCampo: !stateLogin.loading,
                     dicaCampo: "Digite sua senha",
                     esconderTexto: !stateLogin.esconderSenha,
                     focusNode: _focusSenha,
@@ -114,7 +116,12 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
               child: Observer(builder: (_) {
                 return CustomActionButton(
                   campoNome: 'Logar',
-                  function: stateLogin.seFormValido ? () {} : null,
+                  progress: stateLogin.loading,
+                  function: stateLogin.seFormValido
+                      ? () {
+                          stateLogin.login();
+                        }
+                      : null,
                 );
               }),
             ),

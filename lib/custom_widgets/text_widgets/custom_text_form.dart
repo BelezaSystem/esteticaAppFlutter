@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class CustomTextForm extends StatelessWidget {
   final String dicaCampo;
   final Widget icone;
-  final bool ativar;
+  final bool ativarCampo;
 
   final Widget suficone;
   final bool fill;
@@ -28,7 +28,7 @@ class CustomTextForm extends StatelessWidget {
 
   CustomTextForm({
     @required this.dicaCampo,
-    this.ativar,
+    this.ativarCampo,
     this.controller,
     this.esconderTexto = false,
     this.validator,
@@ -50,7 +50,7 @@ class CustomTextForm extends StatelessWidget {
       controller: controller,
       obscureText: esconderTexto,
       validator: validator,
-      enabled: ativar,
+      enabled: ativarCampo,
       onChanged: digitado,
       keyboardType: tipoTeclado,
       textInputAction: acaoTeclado,
