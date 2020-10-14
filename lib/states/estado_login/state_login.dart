@@ -5,7 +5,7 @@ class StateLogin = _StateLoginBase with _$StateLogin;
 
 abstract class _StateLoginBase with Store {
   @observable
-  String email = 'exemple@exemple.com';
+  String email = '';
 
 //Setando email e senha para o controle do estado
   @action

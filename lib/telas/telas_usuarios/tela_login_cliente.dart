@@ -1,7 +1,7 @@
 import 'package:app_estetica/custom_widgets/buttons_widgets/custom_action_button.dart';
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text.dart';
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text_form.dart';
-import 'package:app_estetica/states/state_login.dart';
+import 'package:app_estetica/states/estado_login/state_login.dart';
 import 'package:app_estetica/telas/telas_usuarios/tela_cadastro_cliente.dart';
 import 'package:app_estetica/utils/nav.dart';
 
@@ -154,7 +154,7 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
                       );
                     },
                     child: CustomText(
-                      texto: "Não tem uma conta? Cadastre!",
+                      texto: "Não tem uma conta? Cadastre-se!",
                       bold: true,
                       cor: Colors.black,
                       tamanhoFonte: 20,
