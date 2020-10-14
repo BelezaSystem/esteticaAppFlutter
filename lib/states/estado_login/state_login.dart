@@ -4,42 +4,30 @@ part 'state_login.g.dart';
 class StateLogin = _StateLoginBase with _$StateLogin;
 
 abstract class _StateLoginBase with Store {
+  //OBSERVERS
   @observable
   String email = '';
-
-//Setando email e senha para o controle do estado
-  @action
-  void setEmail(String newEmail) => email = newEmail;
 
   @observable
   String senha = '';
 
-  @action
-  void setSenha(String newSenha) => senha = newSenha;
-
   @observable
   bool esconderSenha = false;
 
-//Estado para mudar o botao, de esconder a senha e mostrar
-  @action
-  void btnMudarSenha() => esconderSenha = !esconderSenha;
-
-//Validando email e senha
-  @computed
-  bool get seEmailValido => RegExp(
-          r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
-      .hasMatch(email);
-
-  @computed
-  bool get seSenhaValido => senha.length >= 6;
-
-  @computed
-  bool get seFormValido => seEmailValido && seSenhaValido;
-
-//action de desativar os textForm quando estiver em loading..
   @observable
   bool loading = false;
 
+//ACTIONS
+  @action
+  void setEmail(String newEmail) => email = newEmail;
+
+  @action
+  void setSenha(String newSenha) => senha = newSenha;
+
+  @action
+  void btnMudarSenha() => esconderSenha = !esconderSenha;
+
+//Action de fazer a funcçao apos clicar no botao
   @action
   Future<void> login() async {
     loading = true;
@@ -48,4 +36,18 @@ abstract class _StateLoginBase with Store {
 
     loading = false;
   }
+
+  //COMPUTEDS
+  //computed de validaçao de email.. (Provisorio nesse estado vai ser apenas no estado do cadastro!)
+  @computed
+  bool get seEmailValido => RegExp(
+          r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+      .hasMatch(email);
+
+  //Validaçao provisorio da senha.
+  @computed
+  bool get seSenhaValido => senha.length >= 6;
+  //verficando se email e senha sao validos!
+  @computed
+  bool get seFormValido => seEmailValido && seSenhaValido;
 }
