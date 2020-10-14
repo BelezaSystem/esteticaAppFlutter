@@ -1,11 +1,11 @@
 import 'package:app_estetica/custom_widgets/buttons_widgets/custom_action_button.dart';
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text.dart';
 import 'package:app_estetica/telas/telas_usuarios/tela_login_cliente.dart';
+import 'package:app_estetica/telas/telas_usuarios/tela_login_gerente.dart';
 import 'package:app_estetica/utils/nav.dart';
 
 import 'package:flutter/material.dart';
 
-import '../../utils/nav.dart';
 import 'tela_login_cliente.dart';
 
 class DecisaoUsuario extends StatefulWidget {
@@ -40,7 +40,7 @@ class _DecisaoUsuarioState extends State<DecisaoUsuario> {
             Container(
               alignment: Alignment.center,
               child: CustomText(
-                texto: 'Bem Vindo!',
+                texto: 'Bem-Vindo!',
                 cor: Colors.white,
                 tamanhoFonte: 40,
                 bold: true,
@@ -71,7 +71,9 @@ class _DecisaoUsuarioState extends State<DecisaoUsuario> {
                   ),
                   _botaoDeDecisao(
                     nomeDoBotao: "Gerente",
-                    funcaoDoBotao: () {},
+                    funcaoDoBotao: () {
+                      push(context, TelaLoginGerente());
+                    },
                   ),
                 ],
               ),

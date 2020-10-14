@@ -1,6 +1,10 @@
 import 'package:app_estetica/custom_widgets/buttons_widgets/custom_action_button.dart';
+import 'package:app_estetica/custom_widgets/buttons_widgets/custom_back_button.dart';
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text_form.dart';
 import 'package:flutter/material.dart';
+
+import '../../custom_widgets/text_widgets/custom_text.dart';
+import '../../custom_widgets/text_widgets/custom_text_form.dart';
 
 class TelaCadastroCliente extends StatefulWidget {
   @override
@@ -17,103 +21,158 @@ class _TelaCadastroClienteState extends State<TelaCadastroCliente> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Cadastre-se"),
-        centerTitle: true,
-      ),
       body: _body(),
     );
   }
 
   _body() {
-    return Container(
-      child: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              Container(
-                padding: EdgeInsets.fromLTRB(20, 15, 20, 5),
-                child: CustomTextForm(
-                  dicaCampo: "Digite seu nome",
-                  acaoTeclado: TextInputAction.next,
-                  tipoTeclado: TextInputType.text,
-                  nextFocus: _focusEmail,
-                  icone: Icon(
-                    Icons.person_outline,
-                    color: Colors.black,
-                  ),
-                  backGColor: Colors.blue[100],
-                  fill: true,
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.fromLTRB(20, 15, 20, 5),
-                child: CustomTextForm(
-                  dicaCampo: "Digite seu email",
-                  acaoTeclado: TextInputAction.next,
-                  tipoTeclado: TextInputType.emailAddress,
-                  focusNode: _focusEmail,
-                  nextFocus: _focusNumero,
-                  icone: Icon(
-                    Icons.email_outlined,
-                    color: Colors.black,
-                  ),
-                  backGColor: Colors.blue[100],
-                  fill: true,
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.fromLTRB(20, 15, 20, 5),
-                child: CustomTextForm(
-                  dicaCampo: "Digite seu numero",
-                  focusNode: _focusNumero,
-                  nextFocus: _focusSenha,
-                  acaoTeclado: TextInputAction.next,
-                  tipoTeclado: TextInputType.number,
-                  icone: Icon(
-                    Icons.phone_android_outlined,
-                    color: Colors.black,
-                  ),
-                  backGColor: Colors.blue[100],
-                  fill: true,
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.fromLTRB(20, 15, 20, 5),
-                child: CustomTextForm(
-                  dicaCampo: "Digite sua senha",
-                  esconderTexto: true,
-                  focusNode: _focusSenha,
-                  icone: Icon(
-                    Icons.lock_outline,
-                    color: Colors.black,
-                  ),
-                  backGColor: Colors.blue[100],
-                  fill: true,
-                ),
-              ),
-              SizedBox(
-                height: 19,
-              ),
-              Container(
-                margin: EdgeInsets.only(
-                  bottom: 10,
-                ),
-                padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                width: 500,
-                child: CustomActionButton(
-                  campoNome: 'Cadastrar',
-                  function: () {
-                    if (!_formKey.currentState.validate()) {
-                      return;
-                    }
-                  },
-                ),
-              ),
-            ],
+    return Form(
+      key: _formKey,
+      child: Stack(
+        children: [
+          Image.asset(
+            "assets/images/lavandocabelo.jpg",
+            height: double.infinity,
+            width: double.infinity,
+            fit: BoxFit.cover,
           ),
-        ),
+          Container(
+            color: Colors.black38,
+          ),
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                CustomBackButton(),
+                Container(
+                  margin: EdgeInsets.only(
+                    top: 50,
+                    left: 20,
+                    right: 20,
+                  ),
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white60,
+                  ),
+                  child: CustomText(
+                    texto: "Cadastre-se já!",
+                    cor: Colors.black87,
+                    bold: true,
+                    tamanhoFonte: 30,
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white30,
+                  ),
+                  margin: EdgeInsets.only(
+                    top: 25,
+                    left: 20,
+                    right: 20,
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.fromLTRB(20, 15, 20, 5),
+                        child: CustomTextForm(
+                          dicaCampo: "Digite seu nome",
+                          acaoTeclado: TextInputAction.next,
+                          tipoTeclado: TextInputType.text,
+                          nextFocus: _focusEmail,
+                          icone: Icon(
+                            Icons.person_outline,
+                            color: Colors.black,
+                          ),
+                          backGColor: Colors.blue[100],
+                          fill: true,
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(20, 15, 20, 5),
+                        child: CustomTextForm(
+                          dicaCampo: "Digite seu email",
+                          acaoTeclado: TextInputAction.next,
+                          tipoTeclado: TextInputType.emailAddress,
+                          focusNode: _focusEmail,
+                          nextFocus: _focusNumero,
+                          icone: Icon(
+                            Icons.email_outlined,
+                            color: Colors.black,
+                          ),
+                          backGColor: Colors.blue[100],
+                          fill: true,
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(20, 15, 20, 5),
+                        child: CustomTextForm(
+                          dicaCampo: "Digite seu numero",
+                          focusNode: _focusNumero,
+                          nextFocus: _focusSenha,
+                          acaoTeclado: TextInputAction.next,
+                          tipoTeclado: TextInputType.number,
+                          icone: Icon(
+                            Icons.phone_android_outlined,
+                            color: Colors.black,
+                          ),
+                          backGColor: Colors.blue[100],
+                          fill: true,
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(20, 15, 20, 5),
+                        child: CustomTextForm(
+                          dicaCampo: "Digite sua senha",
+                          esconderTexto: true,
+                          focusNode: _focusSenha,
+                          icone: Icon(
+                            Icons.lock_outline,
+                            color: Colors.black,
+                          ),
+                          backGColor: Colors.blue[100],
+                          fill: true,
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(20, 15, 20, 5),
+                        child: CustomTextForm(
+                          dicaCampo: "Repita sua senha",
+                          esconderTexto: true,
+                          focusNode: _focusSenha,
+                          icone: Icon(
+                            Icons.lock_outline,
+                            color: Colors.black,
+                          ),
+                          backGColor: Colors.blue[100],
+                          fill: true,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 19,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                          bottom: 10,
+                        ),
+                        padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                        width: 500,
+                        child: CustomActionButton(
+                          campoNome: 'Cadastrar',
+                          function: () {
+                            if (!_formKey.currentState.validate()) {
+                              return;
+                            }
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
