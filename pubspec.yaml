@@ -26,6 +26,7 @@ dependencies:
   splashscreen:
   email_validator: ^1.0.6
   responsive_framework: ^0.0.9
+  carousel_slider: ^2.3.1
   
 
   # The following adds the Cupertino Icons font to your application.

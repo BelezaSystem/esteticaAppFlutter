@@ -30,6 +30,13 @@ mixin _$StateCadastro on _StateCadastroBase, Store {
       (_$seSenhaValidaComputed ??= Computed<bool>(() => super.seSenhaValida,
               name: '_StateCadastroBase.seSenhaValida'))
           .value;
+  Computed<bool> _$seReSenhaValidaComputed;
+
+  @override
+  bool get seReSenhaValida =>
+      (_$seReSenhaValidaComputed ??= Computed<bool>(() => super.seReSenhaValida,
+              name: '_StateCadastroBase.seReSenhaValida'))
+          .value;
   Computed<bool> _$seCamposValidosComputed;
 
   @override
@@ -80,6 +87,21 @@ mixin _$StateCadastro on _StateCadastroBase, Store {
   set senha(String value) {
     _$senhaAtom.reportWrite(value, super.senha, () {
       super.senha = value;
+    });
+  }
+
+  final _$reSenhaAtom = Atom(name: '_StateCadastroBase.reSenha');
+
+  @override
+  String get reSenha {
+    _$reSenhaAtom.reportRead();
+    return super.reSenha;
+  }
+
+  @override
+  set reSenha(String value) {
+    _$reSenhaAtom.reportWrite(value, super.reSenha, () {
+      super.reSenha = value;
     });
   }
 
@@ -157,6 +179,17 @@ mixin _$StateCadastro on _StateCadastroBase, Store {
   }
 
   @override
+  void setReSenha(String value) {
+    final _$actionInfo = _$_StateCadastroBaseActionController.startAction(
+        name: '_StateCadastroBase.setReSenha');
+    try {
+      return super.setReSenha(value);
+    } finally {
+      _$_StateCadastroBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setNumero(String value) {
     final _$actionInfo = _$_StateCadastroBaseActionController.startAction(
         name: '_StateCadastroBase.setNumero');
@@ -173,11 +206,13 @@ mixin _$StateCadastro on _StateCadastroBase, Store {
 nome: ${nome},
 email: ${email},
 senha: ${senha},
+reSenha: ${reSenha},
 numero: ${numero},
 loading: ${loading},
 seEmailValida: ${seEmailValida},
 seNumeroValida: ${seNumeroValida},
 seSenhaValida: ${seSenhaValida},
+seReSenhaValida: ${seReSenhaValida},
 seCamposValidos: ${seCamposValidos}
     ''';
   }

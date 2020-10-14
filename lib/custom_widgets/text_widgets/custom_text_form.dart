@@ -69,6 +69,11 @@ class CustomTextForm extends StatelessWidget {
         prefixIcon: icone,
         suffixIcon: suficone,
         hintText: dicaCampo,
+        errorStyle: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: Colors.red[900],
+        ),
         labelStyle: TextStyle(
           fontSize: 19,
           color: Colors.blue,

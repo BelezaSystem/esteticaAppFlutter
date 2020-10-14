@@ -18,6 +18,9 @@ abstract class _StateCadastroBase with Store {
   String senha = '';
 
   @observable
+  String reSenha = '';
+
+  @observable
   String numero = '';
 
   @observable
@@ -32,6 +35,9 @@ abstract class _StateCadastroBase with Store {
 
   @action
   void setSenha(String value) => senha = value;
+
+  @action
+  void setReSenha(String value) => reSenha = value;
 
   @action
   void setNumero(String value) => numero = value;
@@ -61,5 +67,9 @@ abstract class _StateCadastroBase with Store {
   bool get seSenhaValida => senha.length >= 6;
 
   @computed
-  bool get seCamposValidos => seEmailValida && seSenhaValida && seNumeroValida;
+  bool get seReSenhaValida => reSenha.length >= 6;
+
+  @computed
+  bool get seCamposValidos =>
+      seEmailValida && seSenhaValida && seNumeroValida && seReSenhaValida;
 }
