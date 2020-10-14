@@ -8,6 +8,7 @@ class CustomActionButton extends StatelessWidget {
   final Color color;
   final Color splashColor;
   final Color textColor;
+  final Color desativarColor;
 
   final bool textBold;
 
@@ -21,6 +22,7 @@ class CustomActionButton extends StatelessWidget {
     this.splashColor,
     this.textColor,
     this.textBold = false,
+    this.desativarColor,
   });
 
   @override
@@ -40,7 +42,13 @@ class CustomActionButton extends StatelessWidget {
               ),
             )
           : FlatButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                  circular != null ? circular : 20,
+                ),
+              ),
               onPressed: function,
+              disabledColor: desativarColor,
               splashColor: splashColor != null ? splashColor : color,
               child: Text(
                 campoNome,

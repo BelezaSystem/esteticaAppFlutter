@@ -2,7 +2,7 @@ import 'package:app_estetica/custom_widgets/buttons_widgets/custom_action_button
 import 'package:app_estetica/custom_widgets/buttons_widgets/custom_back_button.dart';
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text.dart';
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text_form.dart';
-import 'package:app_estetica/states/state_login.dart';
+import 'package:app_estetica/states/estado_login/state_login.dart';
 import 'package:app_estetica/telas/telas_usuarios/tela_cadastro_cliente.dart';
 import 'package:app_estetica/utils/nav.dart';
 
@@ -15,7 +15,7 @@ class TelaLoginCliente extends StatefulWidget {
 }
 
 class _TelaLoginClienteState extends State<TelaLoginCliente> {
-  final _stateLogin = StateLogin();
+  StateLogin _stateLogin = StateLogin();
 
   final _focusSenha = FocusNode();
 
@@ -185,6 +185,7 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
     );
   }
 
+  // ignore: missing_return
   String _validacaoFormulario(String txt) {
     if (txt.isEmpty) {
       return "Esse campo é obrigatório!";
