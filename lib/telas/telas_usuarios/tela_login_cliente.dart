@@ -24,7 +24,6 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       body: _body(),
     );
   }
