@@ -8,12 +8,11 @@ import '../../custom_widgets/buttons_widgets/custom_action_button.dart';
 import '../../custom_widgets/text_widgets/custom_text.dart';
 import '../../custom_widgets/text_widgets/custom_text_form.dart';
 
+// ignore: must_be_immutable
 class TelaLoginGerente extends StatelessWidget {
   StateLogin _stateLogin = StateLogin();
-
-  final _formKey = GlobalKey<FormState>();
-
   final _focusSenha = FocusNode();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -36,23 +35,23 @@ class TelaLoginGerente extends StatelessWidget {
           color: Colors.black54,
         ),
         SingleChildScrollView(
-          child: Column(
-            children: [
-              CustomBackButton(),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                    20,
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                CustomBackButton(),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                      20,
+                    ),
+                    color: Colors.white38,
                   ),
-                  color: Colors.white38,
-                ),
-                margin: EdgeInsets.only(
-                  top: 180,
-                  left: 20,
-                  right: 20,
-                ),
-                child: Form(
-                  key: _formKey,
+                  margin: EdgeInsets.only(
+                    top: 180,
+                    left: 20,
+                    right: 20,
+                  ),
                   child: Column(
                     children: [
                       Container(
@@ -61,11 +60,11 @@ class TelaLoginGerente extends StatelessWidget {
                         ),
                         padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
                         child: CustomTextForm(
+                          validator: _stateLogin.validarCampos,
                           dicaCampo: "Digite seu email",
                           nextFocus: _focusSenha,
                           acaoTeclado: TextInputAction.next,
                           tipoTeclado: TextInputType.emailAddress,
-                          validator: _stateLogin.validarCampos,
                           icone: Icon(
                             Icons.email_outlined,
                             color: Colors.blue[700],
@@ -79,10 +78,10 @@ class TelaLoginGerente extends StatelessWidget {
                         child: Observer(
                           builder: (_) {
                             return CustomTextForm(
+                              validator: _stateLogin.validarCampos,
                               dicaCampo: "Digite sua senha",
                               esconderTexto: !_stateLogin.esconderSenha,
                               focusNode: _focusSenha,
-                              validator: _stateLogin.validarCampos,
                               icone: Icon(
                                 Icons.lock_outline,
                                 color: Colors.blue[700],
@@ -112,9 +111,7 @@ class TelaLoginGerente extends StatelessWidget {
                         padding: EdgeInsets.fromLTRB(20, 0, 25, 0),
                         alignment: Alignment.centerRight,
                         child: InkWell(
-                          onTap: () {
-                            print("asdasd");
-                          },
+                          onTap: () {},
                           child: CustomText(
                             texto: "Esqueceu sua senha?",
                             bold: true,
@@ -147,24 +144,26 @@ class TelaLoginGerente extends StatelessWidget {
                           bottom: 15,
                           top: 25,
                         ),
-                        child: InkWell(
-                          splashColor: Colors.blue,
-                          onTap: () {},
-                          child: CustomText(
-                            texto:
-                                "Cadastre seu estabelecimento clicando aqui!",
-                            bold: true,
-                            cor: Colors.black,
-                            tamanhoFonte: 20,
-                            underline: true,
+                        child: Container(
+                          padding: EdgeInsets.only(left: 20, right: 20),
+                          child: InkWell(
+                            splashColor: Colors.blue,
+                            onTap: () {},
+                            child: CustomText(
+                              texto: "Cadastre seu estabelecimento!",
+                              bold: true,
+                              cor: Colors.black,
+                              tamanhoFonte: 20,
+                              underline: true,
+                            ),
                           ),
                         ),
                       ),
                     ],
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ],
