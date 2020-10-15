@@ -1,8 +1,10 @@
 import 'package:app_estetica/custom_widgets/buttons_widgets/custom_action_button.dart';
 import 'package:app_estetica/custom_widgets/buttons_widgets/custom_back_button.dart';
+import 'package:app_estetica/custom_widgets/image_widgets/custom_background_image.dart';
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text.dart';
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text_form.dart';
 import 'package:app_estetica/states/estado_login/state_login.dart';
+import 'package:app_estetica/telas/home_screen/home_screen.dart';
 import 'package:app_estetica/telas/telas_usuarios/tela_cadastro_cliente.dart';
 import 'package:app_estetica/utils/nav.dart';
 
@@ -23,21 +25,18 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: _body(),
+    return CustomBackGroundImage(
+      caminhoDeImagem: "assets/images/corte2.jpg",
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: _body(),
+      ),
     );
   }
 
   _body() {
     return Stack(
       children: [
-        Image.asset(
-          "assets/images/corte2.jpg",
-          height: double.infinity,
-          width: double.infinity,
-          fit: BoxFit.cover,
-        ),
         Container(
           color: Colors.black54,
         ),
@@ -144,11 +143,12 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
                               circular: 25,
                               campoNome: 'Login',
                               progress: _stateLogin.loading,
-                              function: () {
+                              function: () async {
                                 if (!_formKey.currentState.validate()) {
                                   return;
                                 }
-                                _stateLogin.loginCliente();
+                                await _stateLogin.loginCliente();
+                                push(context, HomeScreen());
                               },
                             );
                           },
