@@ -61,6 +61,17 @@ mixin _$StateLogin on _StateLoginBase, Store {
   }
 
   @override
+  String validarCampos(String text) {
+    final _$actionInfo = _$_StateLoginBaseActionController.startAction(
+        name: '_StateLoginBase.validarCampos');
+    try {
+      return super.validarCampos(text);
+    } finally {
+      _$_StateLoginBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 loading: ${loading},

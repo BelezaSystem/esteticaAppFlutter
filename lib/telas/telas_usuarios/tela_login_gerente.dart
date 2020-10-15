@@ -1,11 +1,15 @@
 import 'package:app_estetica/custom_widgets/buttons_widgets/custom_back_button.dart';
+import 'package:app_estetica/states/estado_login/state_login.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../../custom_widgets/buttons_widgets/custom_action_button.dart';
 import '../../custom_widgets/text_widgets/custom_text.dart';
 import '../../custom_widgets/text_widgets/custom_text_form.dart';
 
 class TelaLoginGerente extends StatelessWidget {
+  StateLogin _stateLogin = StateLogin();
+
   final _focusSenha = FocusNode();
 
   @override
@@ -45,41 +49,51 @@ class TelaLoginGerente extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    Container(
-                      margin: EdgeInsets.only(
-                        top: 10,
-                      ),
-                      padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                      child: CustomTextForm(
-                        dicaCampo: "Digite seu email",
-                        nextFocus: _focusSenha,
-                        acaoTeclado: TextInputAction.next,
-                        tipoTeclado: TextInputType.emailAddress,
-                        icone: Icon(
-                          Icons.email_outlined,
-                          color: Colors.blue[700],
-                        ),
-                        backGColor: Colors.blue[100],
-                        fill: true,
-                      ),
+                    Observer(
+                      builder: (_) {
+                        return Container(
+                          margin: EdgeInsets.only(
+                            top: 10,
+                          ),
+                          padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                          child: CustomTextForm(
+                            dicaCampo: "Digite seu email",
+                            nextFocus: _focusSenha,
+                            acaoTeclado: TextInputAction.next,
+                            tipoTeclado: TextInputType.emailAddress,
+                            validator: _stateLogin.validarCampos,
+                            icone: Icon(
+                              Icons.email_outlined,
+                              color: Colors.blue[700],
+                            ),
+                            backGColor: Colors.blue[100],
+                            fill: true,
+                          ),
+                        );
+                      },
                     ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                      child: CustomTextForm(
-                        dicaCampo: "Digite sua senha",
-                        esconderTexto: true,
-                        focusNode: _focusSenha,
-                        icone: Icon(
-                          Icons.lock_outline,
-                          color: Colors.blue[700],
-                        ),
-                        backGColor: Colors.blue[100],
-                        fill: true,
-                        suficone: Icon(
-                          Icons.visibility,
-                          color: Colors.blue[500],
-                        ),
-                      ),
+                    Observer(
+                      builder: (_) {
+                        return Container(
+                          padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                          child: CustomTextForm(
+                            dicaCampo: "Digite sua senha",
+                            esconderTexto: true,
+                            focusNode: _focusSenha,
+                            validator: _stateLogin.validarCampos,
+                            icone: Icon(
+                              Icons.lock_outline,
+                              color: Colors.blue[700],
+                            ),
+                            backGColor: Colors.blue[100],
+                            fill: true,
+                            suficone: Icon(
+                              Icons.visibility,
+                              color: Colors.blue[500],
+                            ),
+                          ),
+                        );
+                      },
                     ),
                     SizedBox(
                       height: 7,

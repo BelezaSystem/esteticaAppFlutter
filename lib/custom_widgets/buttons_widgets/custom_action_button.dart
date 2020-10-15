@@ -48,7 +48,6 @@ class CustomActionButton extends StatelessWidget {
                 ),
               ),
               onPressed: function,
-              disabledColor: desativarColor,
               splashColor: splashColor != null ? splashColor : color,
               child: Text(
                 campoNome,

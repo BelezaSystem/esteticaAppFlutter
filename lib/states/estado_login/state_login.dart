@@ -14,6 +14,11 @@ abstract class _StateLoginBase with Store {
   void btnMudarSenha() => esconderSenha = !esconderSenha;
 
   @action
+  String validarCampos(String text) {
+    return text.isEmpty ? "Preencha esse campo!" : null;
+  }
+
+  @action
   Future<void> loginCliente() async {
     loading = true;
 
