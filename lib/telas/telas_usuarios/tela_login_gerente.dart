@@ -58,7 +58,7 @@ class TelaLoginGerente extends StatelessWidget {
                         ),
                         padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
                         child: CustomTextForm(
-                          validator: _validacaoFormulario,
+                          validator: _stateLogin.validarCampos,
                           dicaCampo: "Digite seu email",
                           nextFocus: _focusSenha,
                           acaoTeclado: TextInputAction.next,
@@ -76,7 +76,7 @@ class TelaLoginGerente extends StatelessWidget {
                         child: Observer(
                           builder: (_) {
                             return CustomTextForm(
-                              validator: _validacaoFormulario,
+                              validator: _stateLogin.validarCampos,
                               dicaCampo: "Digite sua senha",
                               esconderTexto: !_stateLogin.esconderSenha,
                               focusNode: _focusSenha,
@@ -169,12 +169,5 @@ class TelaLoginGerente extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  // ignore: missing_return
-  String _validacaoFormulario(String txt) {
-    if (txt.isEmpty) {
-      return 'Esse campo é obrigatório!';
-    }
   }
 }

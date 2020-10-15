@@ -30,6 +30,20 @@ mixin _$StateCadastro on _StateCadastroBase, Store {
       (_$seSenhaValidaComputed ??= Computed<bool>(() => super.seSenhaValida,
               name: '_StateCadastroBase.seSenhaValida'))
           .value;
+  Computed<bool> _$seNomeValidoComputed;
+
+  @override
+  bool get seNomeValido =>
+      (_$seNomeValidoComputed ??= Computed<bool>(() => super.seNomeValido,
+              name: '_StateCadastroBase.seNomeValido'))
+          .value;
+  Computed<bool> _$seSobreNomeValidoComputed;
+
+  @override
+  bool get seSobreNomeValido => (_$seSobreNomeValidoComputed ??= Computed<bool>(
+          () => super.seSobreNomeValido,
+          name: '_StateCadastroBase.seSobreNomeValido'))
+      .value;
   Computed<bool> _$seReSenhaValidaComputed;
 
   @override
@@ -57,6 +71,21 @@ mixin _$StateCadastro on _StateCadastroBase, Store {
   set nome(String value) {
     _$nomeAtom.reportWrite(value, super.nome, () {
       super.nome = value;
+    });
+  }
+
+  final _$sobreNomeAtom = Atom(name: '_StateCadastroBase.sobreNome');
+
+  @override
+  String get sobreNome {
+    _$sobreNomeAtom.reportRead();
+    return super.sobreNome;
+  }
+
+  @override
+  set sobreNome(String value) {
+    _$sobreNomeAtom.reportWrite(value, super.sobreNome, () {
+      super.sobreNome = value;
     });
   }
 
@@ -135,11 +164,26 @@ mixin _$StateCadastro on _StateCadastroBase, Store {
     });
   }
 
-  final _$loginAsyncAction = AsyncAction('_StateCadastroBase.login');
+  final _$radioValueAtom = Atom(name: '_StateCadastroBase.radioValue');
 
   @override
-  Future<void> login() {
-    return _$loginAsyncAction.run(() => super.login());
+  int get radioValue {
+    _$radioValueAtom.reportRead();
+    return super.radioValue;
+  }
+
+  @override
+  set radioValue(int value) {
+    _$radioValueAtom.reportWrite(value, super.radioValue, () {
+      super.radioValue = value;
+    });
+  }
+
+  final _$cadastrarAsyncAction = AsyncAction('_StateCadastroBase.cadastrar');
+
+  @override
+  Future<void> cadastrar() {
+    return _$cadastrarAsyncAction.run(() => super.cadastrar());
   }
 
   final _$_StateCadastroBaseActionController =
@@ -151,6 +195,17 @@ mixin _$StateCadastro on _StateCadastroBase, Store {
         name: '_StateCadastroBase.setNome');
     try {
       return super.setNome(value);
+    } finally {
+      _$_StateCadastroBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSobreNome(String value) {
+    final _$actionInfo = _$_StateCadastroBaseActionController.startAction(
+        name: '_StateCadastroBase.setSobreNome');
+    try {
+      return super.setSobreNome(value);
     } finally {
       _$_StateCadastroBaseActionController.endAction(_$actionInfo);
     }
@@ -201,17 +256,87 @@ mixin _$StateCadastro on _StateCadastroBase, Store {
   }
 
   @override
+  void setRadioValue(int value) {
+    final _$actionInfo = _$_StateCadastroBaseActionController.startAction(
+        name: '_StateCadastroBase.setRadioValue');
+    try {
+      return super.setRadioValue(value);
+    } finally {
+      _$_StateCadastroBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String validarCampoVazio(String value) {
+    final _$actionInfo = _$_StateCadastroBaseActionController.startAction(
+        name: '_StateCadastroBase.validarCampoVazio');
+    try {
+      return super.validarCampoVazio(value);
+    } finally {
+      _$_StateCadastroBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String validarCampoEmail(String value) {
+    final _$actionInfo = _$_StateCadastroBaseActionController.startAction(
+        name: '_StateCadastroBase.validarCampoEmail');
+    try {
+      return super.validarCampoEmail(value);
+    } finally {
+      _$_StateCadastroBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String validarCampoNumero(String value) {
+    final _$actionInfo = _$_StateCadastroBaseActionController.startAction(
+        name: '_StateCadastroBase.validarCampoNumero');
+    try {
+      return super.validarCampoNumero(value);
+    } finally {
+      _$_StateCadastroBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String validarCampoSenha(String value) {
+    final _$actionInfo = _$_StateCadastroBaseActionController.startAction(
+        name: '_StateCadastroBase.validarCampoSenha');
+    try {
+      return super.validarCampoSenha(value);
+    } finally {
+      _$_StateCadastroBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String validarCampoReSenha(String value) {
+    final _$actionInfo = _$_StateCadastroBaseActionController.startAction(
+        name: '_StateCadastroBase.validarCampoReSenha');
+    try {
+      return super.validarCampoReSenha(value);
+    } finally {
+      _$_StateCadastroBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 nome: ${nome},
+sobreNome: ${sobreNome},
 email: ${email},
 senha: ${senha},
 reSenha: ${reSenha},
 numero: ${numero},
 loading: ${loading},
+radioValue: ${radioValue},
 seEmailValida: ${seEmailValida},
 seNumeroValida: ${seNumeroValida},
 seSenhaValida: ${seSenhaValida},
+seNomeValido: ${seNomeValido},
+seSobreNomeValido: ${seSobreNomeValido},
 seReSenhaValida: ${seReSenhaValida},
 seCamposValidos: ${seCamposValidos}
     ''';
