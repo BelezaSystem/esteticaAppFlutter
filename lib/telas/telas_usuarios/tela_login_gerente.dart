@@ -1,5 +1,6 @@
 import 'package:app_estetica/custom_widgets/buttons_widgets/custom_back_button.dart';
 import 'package:app_estetica/states/estado_login/state_login.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -16,6 +17,7 @@ class TelaLoginGerente extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: _body(context),
     );
   }

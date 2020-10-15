@@ -18,7 +18,7 @@ class _TelaCadastroClienteState extends State<TelaCadastroCliente> {
   StateCadastro _stateCadastro = StateCadastro();
 
   final _focusSobreNome = FocusNode();
-  final _focusEmail = FocusNode();
+
   final _focusNumero = FocusNode();
   final _focusSenha = FocusNode();
   final _focusReSenha = FocusNode();
@@ -28,6 +28,7 @@ class _TelaCadastroClienteState extends State<TelaCadastroCliente> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: _body(),
     );
   }
