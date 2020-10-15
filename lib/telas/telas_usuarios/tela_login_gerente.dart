@@ -109,9 +109,7 @@ class TelaLoginGerente extends StatelessWidget {
                         padding: EdgeInsets.fromLTRB(20, 0, 25, 0),
                         alignment: Alignment.centerRight,
                         child: InkWell(
-                          onTap: () {
-                            print("asdasd");
-                          },
+                          onTap: () {},
                           child: CustomText(
                             texto: "Esqueceu sua senha?",
                             bold: true,
@@ -145,13 +143,12 @@ class TelaLoginGerente extends StatelessWidget {
                           top: 25,
                         ),
                         child: Container(
-                          padding: EdgeInsets.only(left: 20),
+                          padding: EdgeInsets.only(left: 20, right: 20),
                           child: InkWell(
                             splashColor: Colors.blue,
                             onTap: () {},
                             child: CustomText(
-                              texto:
-                                  "Cadastre seu estabelecimento clicando aqui!",
+                              texto: "Cadastre seu estabelecimento!",
                               bold: true,
                               cor: Colors.black,
                               tamanhoFonte: 20,
