@@ -1,6 +1,7 @@
 import 'package:app_estetica/custom_widgets/buttons_widgets/custom_action_button.dart';
 import 'package:app_estetica/custom_widgets/buttons_widgets/custom_back_button.dart';
 import 'package:app_estetica/custom_widgets/buttons_widgets/custom_radio_button.dart';
+import 'package:app_estetica/custom_widgets/image_widgets/custom_background_image.dart';
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text_form.dart';
 import 'package:app_estetica/states/estado_cadastro/state_cadastro.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +28,12 @@ class _TelaCadastroClienteState extends State<TelaCadastroCliente> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _body(),
+    return CustomBackGroundImage(
+      caminhoDeImagem: "assets/images/ferramentas.jpg",
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: _body(),
+      ),
     );
   }
 
@@ -37,12 +42,6 @@ class _TelaCadastroClienteState extends State<TelaCadastroCliente> {
       key: _formKey,
       child: Stack(
         children: [
-          Image.asset(
-            "assets/images/lavandocabelo.jpg",
-            height: double.infinity,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
           Container(
             color: Colors.black38,
           ),

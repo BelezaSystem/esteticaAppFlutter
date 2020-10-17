@@ -1,4 +1,5 @@
 import 'package:app_estetica/custom_widgets/buttons_widgets/custom_back_button.dart';
+import 'package:app_estetica/custom_widgets/image_widgets/custom_background_image.dart';
 import 'package:app_estetica/states/estado_login/state_login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -15,20 +16,18 @@ class TelaLoginGerente extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _body(context),
+    return CustomBackGroundImage(
+      caminhoDeImagem: "assets/images/ferramentas.jpg",
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: _body(context),
+      ),
     );
   }
 
   _body(BuildContext context) {
     return Stack(
       children: [
-        Image.asset(
-          "assets/images/ferramentas.jpg",
-          height: double.infinity,
-          width: double.infinity,
-          fit: BoxFit.cover,
-        ),
         Container(
           color: Colors.black54,
         ),
