@@ -24,7 +24,7 @@ class CustomAppBar extends StatelessWidget {
         return [
           SliverAppBar(
             actions: actions,
-            elevation: 0,
+            elevation: elevacao != null ? elevacao : 0,
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: true,
               title: CustomText(

@@ -4,7 +4,7 @@ import 'package:app_estetica/custom_widgets/image_widgets/custom_background_imag
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text.dart';
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text_form.dart';
 import 'package:app_estetica/states/estado_login/state_login.dart';
-import 'package:app_estetica/telas/home_screen/tela_inicial.dart';
+import 'package:app_estetica/telas/tela_inicial/tela_inicial.dart';
 import 'package:app_estetica/telas/telas_usuarios/tela_cadastro_cliente.dart';
 import 'package:app_estetica/utils/nav.dart';
 
