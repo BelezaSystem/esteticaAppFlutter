@@ -13,7 +13,7 @@ class _CustomSplashScreenState extends State<CustomSplashScreen> {
   Widget build(BuildContext context) {
     return SplashScreen(
       seconds: 3,
-      navigateAfterSeconds: DecisaoUsuario(),
+      navigateAfterSeconds: TelaInicial(),
       image: Image.asset('assets/images/barber.png'),
       backgroundColor: Colors.blue[200],
       photoSize: 100.0,

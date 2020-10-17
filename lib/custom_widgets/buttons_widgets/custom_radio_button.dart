@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CustomRadioButton extends StatelessWidget {
-  int value;
-  String campoNome;
-  int radioGroup;
-  Function onChanged;
+  final int value;
+  final String campoNome;
+  final int radioGroup;
+  final Function onChanged;
 
   CustomRadioButton(this.campoNome,
       {this.value, this.radioGroup, this.onChanged});
