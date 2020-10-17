@@ -1,4 +1,4 @@
-import 'package:app_estetica/telas/telas_usuarios/decisao_usario.dart';
+import 'package:app_estetica/telas/tela_inicial/tela_inicial.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 
@@ -12,7 +12,7 @@ class _CustomSplashScreenState extends State<CustomSplashScreen> {
   Widget build(BuildContext context) {
     return SplashScreen(
       seconds: 3,
-      navigateAfterSeconds: DecisaoUsuario(),
+      navigateAfterSeconds: TelaInicial(),
       image: Image.asset('assets/images/barber.png'),
       backgroundColor: Colors.blue[200],
       photoSize: 100.0,
