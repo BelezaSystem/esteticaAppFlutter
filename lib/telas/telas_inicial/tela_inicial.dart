@@ -40,7 +40,7 @@ class TelaInicial extends StatelessWidget {
       builder: (_) {
         return BottomNavigationBar(
           elevation: 20,
-          backgroundColor: Colors.purple[900],
+          backgroundColor: Color.fromRGBO(45, 45, 111, 1),
           unselectedLabelStyle: TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.bold,

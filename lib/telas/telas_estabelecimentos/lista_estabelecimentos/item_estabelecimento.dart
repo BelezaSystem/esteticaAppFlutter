@@ -1,13 +1,15 @@
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text.dart';
+import 'package:app_estetica/telas/telas_estabelecimentos/tela_estabelecimento/tela_estabelecimento.dart';
+import 'package:app_estetica/utils/nav.dart';
 import 'package:flutter/material.dart';
 
 class ItemEstabelecimento extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return _body();
+    return _body(context);
   }
 
-  _body() {
+  _body(context) {
     return Stack(
       children: [
         Container(
@@ -23,46 +25,51 @@ class ItemEstabelecimento extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             color: Color.fromRGBO(51, 51, 102, 1),
           ),
-          child: Stack(
-            children: [
-              Positioned(
-                left: 50,
-                top: 20,
-                child: CustomText(
-                  texto: "Barber Shop do João Silva",
-                  bold: true,
-                  tamanhoFonte: 25,
-                  cor: Colors.white,
+          child: InkWell(
+            onTap: () {
+              push(context, TelaEstabelecimento());
+            },
+            child: Stack(
+              children: [
+                Positioned(
+                  left: 50,
+                  top: 20,
+                  child: CustomText(
+                    texto: "Barber Shop do João Silva",
+                    bold: true,
+                    tamanhoFonte: 25,
+                    cor: Colors.white,
+                  ),
                 ),
-              ),
-              Positioned(
-                left: 50,
-                top: 55,
-                child: CustomText(
-                  texto: "Dono: Vagner Silva",
-                  bold: true,
-                  tamanhoFonte: 18,
-                  cor: Colors.white60,
+                Positioned(
+                  left: 50,
+                  top: 55,
+                  child: CustomText(
+                    texto: "Dono: Vagner Silva",
+                    bold: true,
+                    tamanhoFonte: 18,
+                    cor: Colors.white60,
+                  ),
                 ),
-              ),
-              Positioned(
-                left: 45,
-                top: 100,
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.room,
-                      color: Colors.white60,
-                    ),
-                    CustomText(
-                      texto: "Av Antônio Rodrigues Damasceno, Viçosa, 13",
-                      tamanhoFonte: 15,
-                      cor: Colors.white60,
-                    ),
-                  ],
+                Positioned(
+                  left: 45,
+                  top: 100,
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.room,
+                        color: Colors.white60,
+                      ),
+                      CustomText(
+                        texto: "Av Antônio Rodrigues Damasceno, Viçosa, 13",
+                        tamanhoFonte: 15,
+                        cor: Colors.white60,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         Positioned(
