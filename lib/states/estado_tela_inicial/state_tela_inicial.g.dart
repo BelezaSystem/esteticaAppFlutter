@@ -24,6 +24,20 @@ mixin _$StateTelaInicial on _StateTelaInicialBase, Store {
     });
   }
 
+  final _$_StateTelaInicialBaseActionController =
+      ActionController(name: '_StateTelaInicialBase');
+
+  @override
+  void onItemTapped(int value) {
+    final _$actionInfo = _$_StateTelaInicialBaseActionController.startAction(
+        name: '_StateTelaInicialBase.onItemTapped');
+    try {
+      return super.onItemTapped(value);
+    } finally {
+      _$_StateTelaInicialBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

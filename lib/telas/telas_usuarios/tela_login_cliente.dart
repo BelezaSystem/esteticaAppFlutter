@@ -148,10 +148,7 @@ class _TelaLoginClienteState extends State<TelaLoginCliente> {
                                   return;
                                 }
                                 await _stateLogin.loginCliente();
-                                push(
-                                  context,
-                                  TelaInicial(),
-                                );
+                                push(context, TelaInicial());
                               },
                             );
                           },
