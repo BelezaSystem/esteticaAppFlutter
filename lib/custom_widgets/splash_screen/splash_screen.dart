@@ -1,4 +1,4 @@
-import 'package:app_estetica/telas/tela_inicial/tela_inicial.dart';
+import 'package:app_estetica/telas/telas_inicial/tela_inicial.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 
