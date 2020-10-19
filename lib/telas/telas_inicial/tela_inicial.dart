@@ -1,7 +1,7 @@
 import 'package:app_estetica/states/estado_tela_inicial/state_tela_inicial.dart';
-import 'package:app_estetica/telas/tela_agendamentos/lista_agendamentos/lista_agendamentos.dart';
-import 'package:app_estetica/telas/tela_estabelecimentos/lista_estabelecimentos/lista_estabelecimentos.dart';
 import 'package:app_estetica/telas/tela_favoritos/lista_favoritos/lista_favoritos.dart';
+import 'package:app_estetica/telas/telas_agendamentos/lista_agendamentos/lista_agendamentos.dart';
+import 'package:app_estetica/telas/telas_estabelecimentos/lista_estabelecimentos/lista_estabelecimentos.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
