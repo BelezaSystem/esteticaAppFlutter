@@ -11,15 +11,24 @@ class ListaEstabelecimentos extends StatelessWidget {
       caminhoDeImagem: "assets/images/manicure.jpg",
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: _body(),
+        body: _body(context),
       ),
     );
   }
 
-  _body() {
+  _body(context) {
     return CustomAppBar(
       titulo: "Estabelecimentos",
-      child: _listaEstabelecimentos(),
+      child: MediaQuery.removePadding(
+        context: context,
+        removeTop: true,
+        child: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (_, index) {
+            return ItemEstabelecimento();
+          },
+        ),
+      ),
     );
   }
 
@@ -37,10 +46,3 @@ class ListaEstabelecimentos extends StatelessWidget {
     );
   }
 }
-
-/*
-  Foto Do estabelecimento,
-  nome,
-  status,
-  endereço
-*/
