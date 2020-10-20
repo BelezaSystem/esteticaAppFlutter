@@ -1,10 +1,14 @@
+import 'package:app_estetica/telas/telas_estabelecimentos/tela_estabelecimento/telas_sobre_estabelecimento/agendar.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
+
+import 'telas_sobre_estabelecimento/geral.dart';
 
 class TelaEstabelecimento extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: Agendar(),
       appBar: AppBar(
         title: Text("Estabelecimento X"),
         centerTitle: true,
@@ -26,6 +30,7 @@ class TelaEstabelecimento extends StatelessWidget {
       child: Scaffold(
         appBar: _tabBar(),
         body: _tabBarView(),
+        backgroundColor: Color.fromRGBO(45, 45, 111, 1),
       ),
     );
   }
@@ -33,14 +38,12 @@ class TelaEstabelecimento extends StatelessWidget {
   _tabBarView() {
     return TabBarView(
       children: [
+        Geral(),
         Container(
           color: Colors.red,
         ),
         Container(
           color: Colors.yellow,
-        ),
-        Container(
-          color: Colors.green,
         ),
       ],
     );
@@ -51,9 +54,10 @@ class TelaEstabelecimento extends StatelessWidget {
       labelStyle: TextStyle(
         fontSize: 17,
         fontWeight: FontWeight.bold,
+        color: Colors.white,
       ),
-      indicatorColor: Colors.black,
-      labelColor: Colors.black,
+      indicatorColor: Colors.white,
+      labelColor: Colors.white,
       tabs: [
         Tab(
           text: 'Geral',
@@ -76,14 +80,15 @@ class TelaEstabelecimento extends StatelessWidget {
         child: Carousel(
           images: [
             NetworkImage(
-                "https://i1.wp.com/multarte.com.br/wp-content/uploads/2020/07/pngtree-black-and-white-barber-shop-logo-png-image_4359640.jpg?fit=696%2C696&ssl=1"),
+                "https://i.pinimg.com/originals/db/c2/d5/dbc2d5399b80e8ec09921733e272cf26.jpg"),
             NetworkImage(
-                "https://i1.wp.com/multarte.com.br/wp-content/uploads/2020/07/pngtree-black-and-white-barber-shop-logo-png-image_4359640.jpg?fit=696%2C696&ssl=1"),
+                "https://i.pinimg.com/474x/76/cf/7d/76cf7dba6423fb43d6165ace17abc572.jpg"),
           ],
           indicatorBgPadding: 3.0,
           borderRadius: true,
           dotSpacing: 20.0,
           showIndicator: true,
+          autoplay: false,
         ),
       ),
     );
