@@ -1,28 +1,72 @@
+import 'package:app_estetica/telas/telas_estabelecimentos/tela_estabelecimento/telas_sobre_estabelecimento/agendar.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 
 class TelaEstabelecimento extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('fulando'),
-        ),
-        body: Column(
-          children: [
-            SizedBox(
-              height: 10,
-            ),
-            _bodyCarousel(),
-            SizedBox(
-              height: 10,
-            ),
-            _tabBar(),
-          ],
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Estabelecimento X"),
+        centerTitle: true,
       ),
+      floatingActionButton: Agendar(),
+      body: Column(
+        children: [
+          _bodyCarousel(),
+          Expanded(
+            child: _tabs(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  _tabs() {
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: _tabBar(),
+        body: _tabBarView(),
+      ),
+    );
+  }
+
+  _tabBarView() {
+    return TabBarView(
+      children: [
+        Container(
+          color: Colors.yellow,
+        ),
+        Container(
+          color: Colors.yellow,
+        ),
+        Container(
+          color: Colors.green,
+        ),
+      ],
+    );
+  }
+
+  _tabBar() {
+    return TabBar(
+      labelStyle: TextStyle(
+        fontSize: 17,
+        fontWeight: FontWeight.bold,
+      ),
+      indicatorColor: Colors.black,
+      labelColor: Colors.black,
+      tabs: [
+        Tab(
+          text: 'Geral',
+        ),
+        Tab(
+          text: 'Serviços',
+        ),
+        Tab(
+          text: 'Informações',
+        ),
+      ],
     );
   }
 
@@ -41,25 +85,10 @@ class TelaEstabelecimento extends StatelessWidget {
           indicatorBgPadding: 3.0,
           borderRadius: true,
           dotSpacing: 20.0,
-          showIndicator: false,
+          showIndicator: true,
           autoplay: false,
         ),
       ),
-    );
-  }
-
-  _tabBar() {
-    return TabBar(
-      labelStyle: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
-      labelColor: Colors.black,
-      tabs: [
-        Tab(
-          text: 'Agendar',
-        ),
-        Tab(
-          text: 'Evento',
-        )
-      ],
     );
   }
 }

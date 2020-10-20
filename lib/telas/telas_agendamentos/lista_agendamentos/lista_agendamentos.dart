@@ -1,6 +1,7 @@
 import 'package:app_estetica/custom_widgets/app_bar_widgets/custom_app_bar/custom_app_bar.dart';
 import 'package:app_estetica/custom_widgets/image_widgets/custom_background_image.dart';
 import 'package:app_estetica/custom_widgets/text_widgets/custom_text.dart';
+import 'package:app_estetica/telas/telas_agendamentos/lista_agendamentos/item_agendamentos.dart';
 import 'package:flutter/material.dart';
 
 class ListaAgendamentos extends StatelessWidget {
@@ -9,16 +10,28 @@ class ListaAgendamentos extends StatelessWidget {
     return CustomBackGroundImage(
       caminhoDeImagem: "assets/images/barbeando.jpg",
       child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: _body(),
+        backgroundColor: Colors.black87,
+        body: _body(context),
       ),
     );
   }
 
-  _body() {
+  _body(context) {
     return CustomAppBar(
       titulo: "Agendamentos",
-      child: _listaAgendamentos(),
+      child: Container(
+        margin: EdgeInsets.all(5),
+        child: MediaQuery.removePadding(
+          context: context,
+          removeTop: true,
+          child: ListView.builder(
+            itemCount: 1,
+            itemBuilder: (_, index) {
+              return ItemAgendamentos();
+            },
+          ),
+        ),
+      ),
     );
   }
 

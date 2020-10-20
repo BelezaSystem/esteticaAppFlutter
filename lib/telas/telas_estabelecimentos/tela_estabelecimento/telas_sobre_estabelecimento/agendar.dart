@@ -6,13 +6,10 @@ import 'package:outline_material_icons/outline_material_icons.dart';
 class Agendar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _body(),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Color.fromRGBO(45, 45, 111, 1),
-        child: Icon(OMIcons.add),
-        onPressed: () => _chamarModal(context),
-      ),
+    return FloatingActionButton(
+      backgroundColor: Color.fromRGBO(45, 45, 111, 1),
+      child: Icon(Icons.cut_rounded),
+      onPressed: () => _chamarModal(context),
     );
   }
 
@@ -32,9 +29,5 @@ class Agendar extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  _body() {
-    Container();
   }
 }
