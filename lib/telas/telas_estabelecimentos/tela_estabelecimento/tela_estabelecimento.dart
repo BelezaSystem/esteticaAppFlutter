@@ -1,110 +1,70 @@
 import 'package:app_estetica/states/estado_tela_inicial/state_tela_inicial.dart';
+import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'telas_sobre_estabelecimento/agendar.dart';
 import 'telas_sobre_estabelecimento/evento.dart';
-import 'telas_sobre_estabelecimento/seu_trabalho.dart';
 
 class TelaEstabelecimento extends StatelessWidget {
-  final _state = StateTelaInicial();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Fulano'),
+      body: ListView(
+        children: [_bodyCarousel(), _tabs()],
       ),
-      bottomNavigationBar: _bottomNavigatorBar(),
-      body: _body(),
     );
   }
 
-  _body() {
-    return Observer(
-      builder: (_) {
-        return IndexedStack(
-          children: _listWidgets(),
-          index: _state.selectedIndex,
-        );
-      },
-    );
-  }
-
-  _listWidgets() {
-    return <Widget>[
-      SeuTrabalho(),
-      Agendar(),
-      Evento(),
-    ];
-  }
-
-  _bottomNavigatorBar() {
-    return Observer(
-      builder: (_) {
-        return BottomNavigationBar(
-          elevation: 20,
-          backgroundColor: Color.fromRGBO(45, 45, 111, 1),
-          unselectedLabelStyle: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
+  _bodyCarousel() {
+    return SingleChildScrollView(
+      child: Container(
+        child: SizedBox(
+          height: 350.0,
+          width: double.infinity,
+          child: Carousel(
+            images: [
+              NetworkImage(
+                  "https://i1.wp.com/multarte.com.br/wp-content/uploads/2020/07/pngtree-black-and-white-barber-shop-logo-png-image_4359640.jpg?fit=696%2C696&ssl=1"),
+              NetworkImage(
+                  "https://i1.wp.com/multarte.com.br/wp-content/uploads/2020/07/pngtree-black-and-white-barber-shop-logo-png-image_4359640.jpg?fit=696%2C696&ssl=1"),
+            ],
+            indicatorBgPadding: 3.0,
+            borderRadius: true,
+            dotSpacing: 20.0,
+            showIndicator: true,
           ),
-          selectedLabelStyle: TextStyle(
-            fontSize: 17,
-            fontWeight: FontWeight.bold,
-          ),
-          items: [
-            _bottomNavigatorBarItem(
-              titulo: "Meus Trabalhos",
-              icone: Icon(OMIcons.workOutline),
-              iconeAtivo: Icon(
-                OMIcons.work,
-              ),
-            ),
-            _bottomNavigatorBarItem(
-              titulo: "Agendar",
-              icone: Icon(
-                OMIcons.bookmarkBorder,
-              ),
-              iconeAtivo: Icon(
-                OMIcons.bookmark,
-              ),
-            ),
-            _bottomNavigatorBarItem(
-              titulo: "Eventos",
-              icone: Icon(
-                OMIcons.errorOutline,
-              ),
-              iconeAtivo: Icon(
-                OMIcons.error,
-              ),
-            ),
-          ],
-          currentIndex: _state.selectedIndex,
-          type: BottomNavigationBarType.fixed,
-          onTap: _state.onItemTapped,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white54,
-        );
-      },
+        ),
+      ),
     );
   }
 
-  _bottomNavigatorBarItem({
-    @required String titulo,
-    @required Icon icone,
-    Icon iconeAtivo,
-  }) {
-    return BottomNavigationBarItem(
-      icon: Container(
-        height: 35,
-        child: icone,
+  _tabBar() {
+    return TabBar(
+        labelStyle: TextStyle(
+          fontSize: 19,
+          fontWeight: FontWeight.bold,
+        ),
+        labelColor: Colors.black,
+        tabs: [
+          Tab(
+            text: 'Agendar',
+          ),
+          Tab(
+            text: 'Evento',
+          )
+        ]);
+  }
+
+  _tabs() {
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Barber Shop do João Silva'),
+        ),
+        body: _tabBar(),
       ),
-      activeIcon: Container(
-        height: 35,
-        child: iconeAtivo != null ? iconeAtivo : icone,
-      ),
-      label: titulo,
     );
   }
 }
