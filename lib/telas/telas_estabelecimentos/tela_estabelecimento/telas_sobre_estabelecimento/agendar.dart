@@ -20,7 +20,6 @@ class Agendar extends StatelessWidget {
     showMaterialModalBottomSheet(
       context: context,
       builder: (context, scrollController) => Container(
-        decoration: BoxDecoration(),
         height: 500,
         child: Column(
           children: [

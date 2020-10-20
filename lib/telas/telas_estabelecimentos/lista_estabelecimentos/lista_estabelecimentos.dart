@@ -35,6 +35,7 @@ class ListaEstabelecimentos extends StatelessWidget {
     );
   }
 
+  // ignore: unused_element
   _listaEstabelecimentos() {
     return Container(
       color: Colors.black87,
