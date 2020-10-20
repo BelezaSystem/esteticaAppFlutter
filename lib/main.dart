@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "App estética",
       theme: ThemeData(
-        primaryColor: Colors.purple[900],
+        primaryColor: Color.fromRGBO(45, 45, 111, 1),
         visualDensity: VisualDensity.adaptivePlatformDensity,
         scaffoldBackgroundColor: Colors.white,
         fontFamily: ('Google'),

@@ -14,7 +14,7 @@ class _CustomSplashScreenState extends State<CustomSplashScreen> {
       seconds: 3,
       navigateAfterSeconds: TelaInicial(),
       image: Image.asset('assets/images/barber.png'),
-      backgroundColor: Colors.blue[200],
+      backgroundColor: Color.fromRGBO(45, 45, 111, 1),
       photoSize: 100.0,
       loaderColor: Colors.blue,
     );
