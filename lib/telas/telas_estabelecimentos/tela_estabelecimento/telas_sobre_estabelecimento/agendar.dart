@@ -6,7 +6,7 @@ class Agendar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      backgroundColor: Color.fromRGBO(45, 45, 111, 1),
+      backgroundColor: Colors.redAccent,
       child: Icon(Icons.cut_rounded),
       onPressed: () => _chamarModal(context),
     );

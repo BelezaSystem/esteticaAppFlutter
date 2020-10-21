@@ -1,4 +1,5 @@
 import 'package:app_estetica/telas/telas_estabelecimentos/tela_estabelecimento/telas_sobre_estabelecimento/agendar.dart';
+import 'package:app_estetica/telas/telas_estabelecimentos/tela_estabelecimento/telas_sobre_estabelecimento/servicos.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 
@@ -39,9 +40,7 @@ class TelaEstabelecimento extends StatelessWidget {
     return TabBarView(
       children: [
         Geral(),
-        Container(
-          color: Colors.yellow,
-        ),
+        Servicos(),
         Container(
           color: Colors.yellow,
         ),
